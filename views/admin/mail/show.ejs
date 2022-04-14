@@ -1,0 +1,79 @@
+<%- include('../partials/header") %>
+
+<!-- Header -->
+    <div class="header bg-default pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-lg-6 col-7">
+              <h6 class="h2 text-white d-inline-block mb-0">Mail</h6>
+              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                  <li class="breadcrumb-item"><a href="#"><i class="fas fa-home text-default"></i></a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Mail</li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid mt--6">
+      <div class="row justify-content-center">
+        <div class=" col-lg-9 ">
+          <div class="card">
+            <div class="card-body">
+                <form method="POST">
+                    <h6 class="heading-small text-muted mb-4">Mail details</h6>
+                    <div class="pl-lg-4">
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <div class="form-group">
+                            <label class="form-control-label" for="sender ">Sender</label>
+                            <input type="text" class="form-control border-input" value="<%= mail.sender %>" disabled id="sender">
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="form-group">
+                            <label class="form-control-label" for="subject">Subject</label>
+                            <input type="text" class="form-control border-input" disabled value="<%= mail.subject %>" disabled id="subject">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                              <label class="form-control-label" for="group">Group</label>
+                              <input type="text" class="form-control border-input" value="<%= mail.group %>" disabled id="group">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="form-group">
+                              <label class="form-control-label" for="date">Date</label>
+                              <input type="text" class="form-control border-input" value="<%= mail.date.toLocaleString() %>" disabled id="date">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-12">
+                            <% if(mail.body.length) { %>
+                                <div class="form-group">
+                                    <label class="form-control-label" for="body">Body</label>
+                                    <div class="form-control border-input" style="height: unset; max-height: 50vh; overflow: auto;"  disabled id="body"><%- mail.body %></div>
+                                </div>
+                            <% } else { %>
+                                <div class="lead mb-3 mt-2">No body</div>
+                            <% } %>
+                            
+                        </div> 
+                      </div>
+                    </div>
+                  </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+        <!-- Footer -->
+
+<%- include('../partials/footer") %>

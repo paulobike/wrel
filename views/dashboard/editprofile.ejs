@@ -1,0 +1,1072 @@
+<%- include ("partials/header") %>
+
+
+    <div id="s63">
+
+
+
+
+
+
+
+
+        <a name="mainContent"></a>
+        <br>
+        <ul class="cons-nav clearfix">
+            <li class="first">
+
+                Personal Profile
+
+            </li>
+
+            <li>
+
+                <a href="https://give.worldrelief.org/site/ConsInterestsUser/1245695830?tabID=email_prefs">Email
+                    Preferences</a>
+
+            </li>
+
+
+
+
+
+
+        </ul>
+
+        <style type="text/css">
+            .TabFont {
+                font-size: 11px;
+            }
+        </style>
+
+        <div class="appAreaNoWidth clearfix" style="width: 70em">
+
+
+
+        </div>
+
+
+        <div id="intro_html" class="appArea">
+
+        </div>
+        <div id="cons_profile">
+            <div class="appArea cons-prof cons-pers">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <form name="EditCons" id="EditCons" method="post"
+                    action="/dashboard/profile">
+                    <input type="hidden" name="CSRFToken" value="104962F398B41A5C3DBF78E617210124">
+
+
+
+
+                    <p><a href="https://give.worldrelief.org/site/ConsProfileUser/1245695830?op.dispConsPasswd=">Change/Reset
+                            Password</a></p>
+
+
+
+
+
+
+
+                    <div class="Hint">* = Required Fields</div>
+
+                    <h3>
+                        <span="biographical">Biographical Information</span="biographical">
+                    </h3>
+                    <div class="line"></div>
+                    <fieldset>
+
+                        <table class="grid" cellspacing="0" cellpadding="0">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <h4>Name:</h4>
+                                    </td>
+                                    <td>
+                                        <table class="cons-name nogrid" cellspacing="0" cellpadding="0">
+                                            <tbody>
+                                                <tr>
+
+                                                    <td>
+
+                                                        <p class="label">
+
+
+
+                                                            <label for="cons_title" class="wrapable">
+                                                                Title:
+                                                            </label>
+                                                        </p>
+
+
+                                                    </td>
+
+
+                                                    <td>
+
+                                                        <p class="label">
+
+
+
+                                                            <label for="first_name" class="wrapable">
+                                                                First Name:
+                                                            </label>
+                                                        </p>
+
+
+                                                    </td>
+
+
+
+                                                    <td>
+
+                                                        <p class="label">
+
+
+
+                                                            <label for="last_name" class="wrapable">
+                                                                Last Name:
+                                                            </label>
+                                                        </p>
+
+
+                                                    </td>
+
+
+                                                    <td>
+
+                                                        <p class="label">
+
+
+
+                                                            <label for="cons_suffix" class="wrapable">
+                                                                Suffix:
+                                                            </label>
+                                                        </p>
+
+
+                                                    </td>
+
+
+                                                    <td>
+
+                                                        <p class="label">
+
+
+
+                                                            <label for="cons_prof_suffix" class="wrapable">
+                                                                Professional Suffix:
+                                                            </label>
+                                                        </p>
+
+
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+
+                                                    <td class="NetscapeFix">
+
+                                                        <select name="title" id="cons_title">
+
+                                                            <option value="<%= user.title %>" selected="selected"><%= user.title %></option>
+
+                                                            <option value=""></option>
+                                                            <option value="Mr.">Mr.</option>
+                                                            <option value="Ms.">Ms.</option>
+                                                            <option value="Mrs.">Mrs.</option>
+                                                            <option value="Miss">Miss</option>
+                                                            <option value="Dr.">Dr.</option>
+
+                                                        </select>
+
+
+                                                    </td>
+
+
+                                                    <td class="NetscapeFix">
+
+                                                        <input type="text" name="firstname" id="first_name"
+                                                            value="<%= user.firstname %>" maxlength="50" size="13">
+
+
+                                                    </td>
+
+
+
+                                                    <td class="NetscapeFix">
+
+                                                        <input type="text" name="lastname" id="last_name"
+                                                            value="<%= user.lastname %>" maxlength="50" size="13">
+
+
+                                                    </td>
+
+
+                                                    <td class="NetscapeFix">
+
+                                                        <select name="suffix" id="cons_suffix">
+
+
+                                                            <option value="<%= user.suffix %>"><%= user.suffix %></option>
+                                                            <option value="Sr.">Sr.</option>
+                                                            <option value="Jr.">Jr.</option>
+                                                            <option value="II">II</option>
+                                                            <option value="III">III</option>
+                                                            <option value="IV">IV</option>
+                                                            <option value="V">V</option>
+
+                                                        </select>
+
+
+                                                    </td>
+
+
+                                                    <td class="NetscapeFix">
+
+                                                        <select name="professionalSuffix" id="cons_prof_suffix">
+
+
+                                                            <option value="<%= user.professionalSuffix %>"><%= user.professionalSuffix %></option>
+                                                            <option value="Esq.">Esq.</option>
+                                                            <option value="JD">JD</option>
+                                                            <option value="MD">MD</option>
+                                                            <option value="PhD">PhD</option>
+                                                            <option value="DO">DO</option>
+                                                            <option value="DDS">DDS</option>
+                                                            <option value="DVM">DVM</option>
+                                                            <option value="PE">PE</option>
+
+                                                        </select>
+
+
+                                                    </td>
+
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+                        <table class="grid" cellspacing="0" cellpadding="0">
+
+
+
+
+                            <tbody>
+                                <tr>
+                                    <td width="30%">
+                                        <p class="label">
+
+
+                                            *
+
+
+                                            <label for="user_name" class="wrapable">User Name:
+
+                                                <span style="display:none;">Required</span>
+
+                                            </label>
+                                        </p>
+                                    </td>
+
+
+                                    <td width="28%" nowrap="nowrap">
+                                        <input type="text" name="user_name" id="user_name" value="<%= user.username %>" disabled
+                                            maxlength="60">
+                                    </td>
+
+                                    <td colspan="2">
+                                        <p class="Hint">5 to 60 characters</p>
+                                    </td>
+
+                                </tr>
+
+
+
+
+                            </tbody>
+                        </table>
+
+
+
+                        <h3>
+                            <span="email_group">Email</span="email_group">
+                        </h3>
+                        <div class="line"></div>
+                        <fieldset>
+                            <table class="grid" cellspacing="0" cellpadding="0">
+                                <tbody>
+                                    <tr valign="top">
+                                        <td width="30%">
+                                            <p class="label">
+
+                                                <span id="primary_email_req_field_indicator">*</span>
+
+                                                <label for="primary_email" class="wrapable">
+                                                    Email:
+                                                    <span style="position:absolute;left:-9999px">. Required.</span>
+
+                                                </label>
+                                            </p>
+
+                                        </td>
+                                        <td width="70%" nowrap="nowrap">
+                                            <input type="text" name="primary_email" id="primary_email"
+                                                value="<%= user.username %>" maxlength="255">
+
+                                        </td>
+                                    </tr>
+
+                                    <tr valign="top">
+                                        <td width="30%">
+                                            <p class="label">
+
+
+
+                                                <label for="secondary_email" class="wrapable">
+                                                    Secondary Email:
+                                                </label>
+                                            </p>
+
+                                        </td>
+                                        <td width="70%" nowrap="nowrap">
+                                            <input type="text" name="secondaryEmail" id="secondary_email" value="<%= user.secondaryEmail %>"
+                                                maxlength="255">
+
+                                        </td>
+                                    </tr>
+
+
+
+
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <input type="checkbox" name="mailSub" id="accepts_email" value="true"
+                                            <% if(user.mailSub) { %>
+                                                checked
+                                            <% } %>>
+                                            <label for="accepts_email" class="wrapable checkbox">Please check this box
+                                                to receive or continue receiving periodic email updates from World
+                                                Relief</label>
+                                        </td>
+                                    </tr>
+
+
+
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <br>
+                                            Preferred Format:
+                                            <input type="radio" name="preferred_email_format"
+                                                id="preferred_email_format" value="HTML" 
+                                                <% if(user.mailFormat == 'HTML') { %>
+                                                    checked
+                                                <% } %>>
+                                            <label class="wrapable radio" for="preferred_email_format">HTML</label>
+                                            <input type="radio" name="preferred_email_format"
+                                                id="preferred_email_format" value="plain" 
+                                                <% if(user.mailFormat == 'Plain') { %>
+                                                    checked
+                                                <% } %>>
+                                            <label class="wrapable radio" for="preferred_email_format">Plain
+                                                Text</label>
+                                        </td>
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                        </fieldset>
+
+                        <h3>
+                            <span="address">Address</span="address">
+                        </h3>
+                        <div class="line"></div>
+                        <fieldset>
+                            <table class="grid" cellspacing="0" cellpadding="0">
+
+
+                                <tbody>
+                                    <tr valign="top">
+                                        <td class="heading" colspan="2">
+                                            <h4>Address:</h4>
+                                        </td>
+                                    </tr>
+
+
+
+                                    <tr>
+                                        <td width="30%">
+
+                                            <p class="label">
+
+
+
+                                                <label for="home_street1" class="wrapable">
+                                                    Street 1:
+                                                </label>
+                                            </p>
+
+
+                                        </td>
+                                        <td>
+
+                                            <input type="text" name="address[street1]" id="home_street1" value="<%= user.address.street1 %>"
+                                                maxlength="128" size="35">
+
+
+                                        </td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td width="30%">
+
+                                            <p class="label">
+
+
+
+                                                <label for="home_street2" class="wrapable">
+                                                    Street 2:
+                                                </label>
+                                            </p>
+
+
+                                        </td>
+                                        <td width="70%">
+
+                                            <input type="text" name="address[street2]" id="home_street2" value="<%= user.address.street2 %>"
+                                                maxlength="128" size="35">
+
+
+                                        </td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td width="30%">
+
+                                            <p class="label">
+
+
+
+                                                <label for="home_street3" class="wrapable">
+                                                    Street 3:
+                                                </label>
+                                            </p>
+
+
+                                        </td>
+                                        <td width="70%">
+
+                                            <input type="text" name="address[street3]" id="home_street3" value="<%= user.address.street3 %>"
+                                                maxlength="128" size="35">
+
+
+                                        </td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td width="30%">
+
+                                            <p class="label">
+
+
+
+                                                <label for="home_city" class="wrapable">
+                                                    City:
+                                                </label>
+                                            </p>
+
+
+                                        </td>
+                                        <td width="70%">
+
+                                            <input type="text" name="address[city]" id="home_city" value="<%= user.address.value %>" maxlength="64"
+                                                size="35">
+
+
+                                        </td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td width="30%">
+
+                                            <p class="label">
+
+
+
+                                                <label for="home_stateprov" class="wrapable">
+                                                    State/Province:
+                                                </label>
+                                            </p>
+
+
+                                        </td>
+                                        <td width="70%">
+
+                                            <select name="address[state]" id="home_stateprov">
+
+                                                <option value="<%= user.address.state %>" selected="selected"><%= user.address.state %></option>
+
+                                                <optgroup label="United States">
+                                                    <option value="AK">AK</option>
+                                                    <option value="AL">AL</option>
+                                                    <option value="AR">AR</option>
+                                                    <option value="AZ">AZ</option>
+                                                    <option value="CA">CA</option>
+                                                    <option value="CO">CO</option>
+                                                    <option value="CT">CT</option>
+                                                    <option value="DC">DC</option>
+                                                    <option value="DE">DE</option>
+                                                    <option value="FL">FL</option>
+                                                    <option value="GA">GA</option>
+                                                    <option value="HI">HI</option>
+                                                    <option value="IA">IA</option>
+                                                    <option value="ID">ID</option>
+                                                    <option value="IL">IL</option>
+                                                    <option value="IN">IN</option>
+                                                    <option value="KS">KS</option>
+                                                    <option value="KY">KY</option>
+                                                    <option value="LA">LA</option>
+                                                    <option value="MA">MA</option>
+                                                    <option value="MD">MD</option>
+                                                    <option value="ME">ME</option>
+                                                    <option value="MI">MI</option>
+                                                    <option value="MN">MN</option>
+                                                    <option value="MO">MO</option>
+                                                    <option value="MS">MS</option>
+                                                    <option value="MT">MT</option>
+                                                    <option value="NC">NC</option>
+                                                    <option value="ND">ND</option>
+                                                    <option value="NE">NE</option>
+                                                    <option value="NH">NH</option>
+                                                    <option value="NJ">NJ</option>
+                                                    <option value="NM">NM</option>
+                                                    <option value="NV">NV</option>
+                                                    <option value="NY">NY</option>
+                                                    <option value="OH">OH</option>
+                                                    <option value="OK">OK</option>
+                                                    <option value="OR">OR</option>
+                                                    <option value="PA">PA</option>
+                                                    <option value="RI">RI</option>
+                                                    <option value="SC">SC</option>
+                                                    <option value="SD">SD</option>
+                                                    <option value="TN">TN</option>
+                                                    <option value="TX">TX</option>
+                                                    <option value="UT">UT</option>
+                                                    <option value="VA">VA</option>
+                                                    <option value="VT">VT</option>
+                                                    <option value="WA">WA</option>
+                                                    <option value="WI">WI</option>
+                                                    <option value="WV">WV</option>
+                                                    <option value="WY">WY</option>
+                                                </optgroup>
+                                                <optgroup label="US Territories">
+                                                    <option value="AS">AS</option>
+                                                    <option value="FM">FM</option>
+                                                    <option value="GU">GU</option>
+                                                    <option value="MH">MH</option>
+                                                    <option value="MP">MP</option>
+                                                    <option value="PR">PR</option>
+                                                    <option value="PW">PW</option>
+                                                    <option value="VI">VI</option>
+                                                </optgroup>
+                                                <optgroup label="US Military">
+                                                    <option value="AA">AA</option>
+                                                    <option value="AE">AE</option>
+                                                    <option value="AP">AP</option>
+                                                </optgroup>
+                                                <optgroup label="Canada">
+                                                    <option value="AB">AB</option>
+                                                    <option value="BC">BC</option>
+                                                    <option value="MB">MB</option>
+                                                    <option value="NB">NB</option>
+                                                    <option value="NL">NL</option>
+                                                    <option value="NS">NS</option>
+                                                    <option value="NT">NT</option>
+                                                    <option value="NU">NU</option>
+                                                    <option value="ON">ON</option>
+                                                    <option value="PE">PE</option>
+                                                    <option value="QC">QC</option>
+                                                    <option value="SK">SK</option>
+                                                    <option value="YT">YT</option>
+                                                </optgroup>
+                                                <optgroup label="Other Countries">
+                                                    <option value="None">None</option>
+                                                    <option value=""></option>
+                                                </optgroup>
+
+                                            </select>
+
+
+                                        </td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td width="30%">
+
+                                            <p class="label">
+
+
+
+                                                <label for="home_county" class="wrapable">
+                                                    County:
+                                                </label>
+                                            </p>
+
+
+                                        </td>
+                                        <td class="NetscapeFix" width="70%">
+
+                                            <input type="text" name="address[county]" id="home_county" value="<%= user.address.county %>"
+                                                maxlength="100">
+
+
+                                        </td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td width="30%">
+
+                                            <p class="label">
+
+
+
+                                                <label for="home_zip" class="wrapable">
+                                                    ZIP/Postal Code:
+                                                </label>
+                                            </p>
+
+
+                                        </td>
+                                        <td width="70%">
+
+                                            <input type="text" name="address[zipCode]" id="home_zip" value="<%= user.address.zipCode %>" maxlength="40"
+                                                size="15">
+
+
+                                        </td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+
+
+                                    <tr>
+                                        <td width="30%">
+
+                                            <p class="label">
+
+
+
+                                                <label for="home_country" class="wrapable">
+                                                    Country:
+                                                </label>
+                                            </p>
+
+
+                                        </td>
+                                        <td class="NetscapeFix" width="70%">
+
+                                            <select name="address[country]" id="home_country">
+
+                                                <option value="<%= user.address.country %>" selected="selected"><%= user.address.country %></option>
+
+                                                <option value=""></option>
+                                                <%= countries %>
+                                            </select>
+
+
+                                        </td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+
+
+
+
+
+
+
+
+
+                                    <tr>
+                                        <td class="spacer" colspan="2">&nbsp;</td>
+                                    </tr>
+
+
+
+
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <input type="checkbox" name="postalMail" id="accepts_postal_mail"
+                                            <% if(user.postalMail) { %>
+                                                checked="checked"
+                                            <% } %>
+                                                value="true">
+                                            <label for="accepts_postal_mail" class="checkbox wrapable">Yes, I would like
+                                                to receive postal mail from World Relief</label>
+                                        </td>
+                                    </tr>
+
+
+
+                                </tbody>
+                            </table>
+                        </fieldset>
+
+                        <h3>
+                            <span="phone_group">Phone</span="phone_group">
+                        </h3>
+                        <div class="line"></div>
+                        <fieldset>
+                            <table class="grid" cellspacing="0" cellpadding="0">
+
+
+                                <tbody>
+                                    <tr>
+                                        <td width="30%">
+                                            <p class="label">
+
+
+
+                                                <label for="home_phone" class="wrapable">
+                                                    Phone:
+                                                </label>
+                                            </p>
+
+                                        </td>
+                                        <td class="NetscapeFix">
+
+                                            <input type="text" name="phone" id="home_phone" value="<%= user.phone %>"
+                                                maxlength="50">
+
+
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td width="30%">
+                                            <p class="label">
+
+
+
+                                                <label for="home_fax" class="wrapable">
+                                                    Fax:
+                                                </label>
+                                            </p>
+
+                                        </td>
+                                        <td class="NetscapeFix">
+
+                                            <input type="text" name="fax" id="home_fax" value="<%= user.fax %>" maxlength="50">
+
+
+                                        </td>
+                                    </tr>
+
+
+
+
+                                    <tr>
+                                        <td width="30%">
+                                            <p class="label">
+
+
+
+                                                <label for="work_phone" class="wrapable">
+                                                    Work Phone:
+                                                </label>
+                                            </p>
+
+                                        </td>
+                                        <td class="NetscapeFix">
+
+                                            <input type="text" name="workPhone" id="work_phone" value="<%= user.workPhone %>"
+                                                maxlength="50">
+
+
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td width="30%">
+                                            <p class="label">
+
+
+
+                                                <label for="mobile_phone" class="wrapable">
+                                                    Mobile Phone:
+                                                </label>
+                                            </p>
+
+                                        </td>
+                                        <td class="NetscapeFix">
+
+                                            <input type="text" name="mobilePhone" id="mobile_phone" value="<%= user.mobilePhone %>"
+                                                maxlength="50">
+
+
+                                        </td>
+                                    </tr>
+
+
+
+                                </tbody>
+                            </table>
+                        </fieldset>
+
+                        <h3>
+                            <span="transactions">Transaction Information</span="transactions">
+                        </h3>
+                        <div class="line"></div>
+                        <fieldset>
+
+                            <table class="grid" cellspacing="0" cellpadding="0">
+
+
+                                <tbody>
+                                    <tr>
+                                        <td class="heading" colspan="4" valign="top">
+                                            <h4>Last Transaction:</h4>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="30%" nowrap="nowrap">
+                                            <p class="label">Date:</p>
+
+                                        </td>
+                                        <td width="18%">
+
+                                            &nbsp;
+
+                                            &nbsp;</td>
+                                        <td width="22%" nowrap="nowrap">
+                                            <p class="label">Amount:</p>
+
+                                        </td>
+                                        <td>
+                                            <span class="cons_text_value" id="cons_value_last_trans_amount">
+
+
+                                                &nbsp;
+
+                                            </span>
+
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td nowrap="nowrap">
+                                            <p class="label">Tender Type:</p>
+
+                                        </td>
+                                        <td>
+
+
+                                            &nbsp;
+
+
+                                            &nbsp;</td>
+                                        <td nowrap="nowrap">
+                                            <p class="label">Payment Method:</p>
+
+                                        </td>
+                                        <td>
+
+
+                                            &nbsp;
+
+
+                                            &nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td valign="top" nowrap="nowrap">
+                                            <p class="label">Campaign:</p>
+
+                                        </td>
+                                        <td>
+                                            <span class="cons_text_value" id="cons_value_last_trans_campaign">
+
+
+                                                &nbsp;
+
+                                            </span>
+
+                                        </td>
+
+
+                                        <td colspan="2">&nbsp;</td>
+
+
+                                    </tr>
+
+
+
+
+
+
+
+                                </tbody>
+                            </table>
+
+                        </fieldset>
+                        <fieldset>
+
+                            <table class="grid" cellspacing="0" cellpadding="0">
+
+
+                                <tbody>
+                                    <tr>
+                                        <td width="30%">
+                                            <p class="label">Lifetime Amount:</p>
+
+                                        </td>
+                                        <td class="ROValue">
+
+                                            <span class="cons_text_value" id="cons_value_lifetime_total_trans_amount">
+                                                $0.00
+
+
+                                            </span>
+
+
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td width="30%">
+                                            <p class="label">Lifetime Transaction Count:</p>
+
+                                        </td>
+                                        <td class="ROValue">
+
+                                            <span class="cons_text_value" id="cons_value_lifetime_total_trans_count">
+                                                0
+
+
+                                            </span>
+
+
+                                        </td>
+                                    </tr>
+
+
+
+                                </tbody>
+                            </table>
+
+                        </fieldset>
+
+
+
+                        <p>
+
+                            <input type="submit" name="op.saveCons" id="op.saveCons" value="Save" title="Save"
+                                class="blueButton">&nbsp;&nbsp;
+
+                            <input type="submit" name="op.cnclEditCons" id="op.cnclEditCons" value="Cancel"
+                                title="Cancel" class="Button">
+                        </p>
+                        <input type="hidden" name="dispMode" id="dispMode" value="edit">
+
+
+                        <input type="hidden" name="panesOpen" id="panesOpen" value="ffffffffffffffff">
+
+                        <div style="display:none">
+                            <label for="denySubmit">Spam Control Text:</label>&nbsp;
+                            <input type="text" name="denySubmit" id="denySubmit" value=""
+                                alt="This field is used to prevent form submission by scripts.">&nbsp;Please leave this
+                            field empty
+                        </div>
+
+
+
+
+                        <p class="spacer">&nbsp;</p>
+                    </fieldset>
+                </form>
+            </div>
+
+
+            <div class="yui-panel-container yui-overlay-hidden" id="lightbox-for-long-load_c"
+                style="visibility: hidden; left: 677px; top: 308px; z-index: 2;">
+                <div id="lightbox-for-long-load" class="yui-panel-container yui-module yui-overlay yui-panel"
+                    style="visibility: inherit; width: 420px;">
+                    <div class="hd" style="cursor: auto;"> Loading...</div>
+                    <div class="bd">
+                        <p>
+                            <img alt="Please wait." src="../images/ajax_loaders/dots.gif">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Please wait while we process your request
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                preEnhance('lightbox-for-long-load');
+                Y.use('jquery-ui', 'boxinator', 'yui2-element', 'yui2-button', function (Y) {
+                    jQuery(document).ready(function () {
+                        var lightbox_long_load = new Y.Convio.widget.Boxinator('#lightbox-for-long-load', Y.Convio.widget.Boxinator.USER_LightBox);
+                        var long_load_link = jQuery('a[id^="remove_cons_link"]');
+                        var lightbox_long_load_show = new YAHOO.util.Element(long_load_link);
+                        lightbox_long_load_show.subscribe('click', lightbox_long_load.onEventShowWithDelay, null, lightbox_long_load);
+                        postEnhance('lightbox-for-long-load');
+                    });
+                });
+            </script><noscript>&nbsp;</noscript>
+
+
+        </div>
+        <div id="outro_html" class="appArea">
+
+        </div>
+    </div>
+
+    <%- include ("partials/footer") %>

@@ -1,0 +1,134 @@
+<%- include('../partials/header") %>
+    <!-- Header -->
+    <div class="header bg-default  pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-12">
+              <h6 class="h2 text-white d-inline-block mb-0">Withdrawals</h6>
+              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                  <li class="breadcrumb-item"><a href="/"><i class="fas fa-home text-default"></i></a></li>
+                  <li class="breadcrumb-item active">Withdrawals</li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+        <div class="row mt-4 justify-content-center">
+            <div class="">
+                <div class="card" style="max-width: 95vw;">    
+                  <div class="card-header">
+                    <div class="title" style="color:#66615b;display: flex;justify-content: space-between;">
+                        <h4 style="margin-top: auto;">Withdrawals </h4>
+                        <div>                               
+                            <form action="/admin/withdrawals" method="get">
+                                <input type="search" placeholder="User or currency" class="form-control" name="search" style="height: 35px;">
+                            </form>
+                        </div>
+                    </div>
+                    <!-- <p class="category">Here is a subtitle for this table</p> -->
+                  </div> 
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead  class="thead-light">
+                                <tr>
+                                    <th class="text-capitalize">Wallet / Account</th>
+                                    <th class="text-capitalize">Username</th>
+                                    <th class="text-capitalize">Amount</th>
+                                    <th class="text-capitalize">Currency</th>
+                                    <th class="text-capitalize">Approved</th>
+                                    <th class="text-capitalize">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                              <% if(withdrawals.length) { %>
+                                <% withdrawals.forEach((withdrawal) => { %>
+                                    <tr style="text-align:left">
+                                        <td><%= withdrawal.address %></td>
+                                        <td><a href="/admin/users/<%= withdrawal.user.id %>"><%= withdrawal.user.username %></a></td>
+                                        <td style="font-weight: 600;"><%= config.currency_unit %><%= withdrawal.amount %></td>
+                                        <td><%= withdrawal.cryptoType == 'usd'? 'Perfect money': withdrawal.cryptoType %></td>
+                                        <td><%= withdrawal.delivered %></td>
+                                        <td>
+                                          <% if(withdrawal.approved === 'yes' || withdrawal.approved === 'no') { %>
+                                            <form action="/admin/withdrawals/<%= withdrawal._id %>?_method=DELETE" method="POST" class="d-inline" onclick="event.stopPropagation()"
+                                              onsubmit="return confirm('Are you sure you want to delete this document?');">
+                                              <input type="hidden" name="action" value="approve">
+                                              <button type="submit" class="btn btn-sm btn-warning">
+                                                <i class="fa fa-trash-alt"></i>
+                                              </button>
+                                            </form>
+                                          <% } else { %>
+                                            <form action="/admin/withdrawals/<%= withdrawal._id %>?_method=PUT" method="POST" class="d-inline" onclick="event.stopPropagation()">
+                                              <input type="hidden" name="approved" value="true">
+                                              <button type="submit" class="btn btn-sm btn-success">Approve</button>
+                                            </form>
+                                            <form action="/admin/withdrawals/<%= withdrawal._id %>?_method=PUT" method="POST" class="d-inline" onclick="event.stopPropagation()">
+                                              <input type="hidden" name="approved" value="false">
+                                              <button type="submit" class="btn btn-sm btn-warning">Reject</button>
+                                            </form>
+                                          <% } %>
+                                          
+                                            <a href="/admin/withdrawals/<%= withdrawal._id %>"><i class="fa fa-edit text-default"></i></a>
+                                        </td>
+                                    </tr>
+                                <% }); %>  
+                              <% } else { %>
+                                <tr>
+                                  <th colspan="4" class="lead text-center" style="font-size: 1.25rem; font-weight: 300;">
+                                    No withdrawals yet!
+                                  </th>
+                                </tr>
+                              <% } %>
+                                                              
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-12 py-3" style="border-top: 1px solid rgba(0,0,0,.1)">
+                      <div class="row text-center">
+                        <div class="col-4">
+                          <a href="<%= `/admin/withdrawals?offset=${offset - end}${search? '&search=' + encodeURI(search) : ''}` %>" 
+                          class="btn btn-primary p-1 float-right <%= offset <= 0? 'disabled': '' %>" 
+                          style="width: 30px;">
+                            <
+                          </a>
+                        </div>
+                        <div class="col-4">
+                          <div class="dropdown">
+                            <button class="btn btn-outline-secondary dropdown-toggle text-lowercase p-1" 
+                            type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" 
+                            aria-expanded="false" style="color:var(--primary); border-color:var(--primary);">
+                                <%= offset + 1 %> to <%- offset + end %>
+                            </button>
+                            <div class="dropdown-menu" style="z-index: 1030;">
+                                <% for (var i = 0; i < count; i += end) { %>
+                                    <a href="<%= `/admin/withdrawals?offset=${i}${search? '&search=' + encodeURI(search) : ''}` %>" 
+                                    class="btn btn-secondary dropdown-item text-lowercase <%= (i + 1) === offset? 'active disabled': '' %>">
+                                      <%= i + 1 %> to <%= i+end %>
+                                    </a>
+                                <% }; %>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-4">
+                          <a href="<%= `/admin/withdrawals?offset=${offset + end}${search? '&search=' + encodeURI(search) : ''}` %>" 
+                          class="btn btn-primary p-1 float-left <%= offset >= count - end? 'disabled': '' %>" 
+                          style="width: 30px;">
+                            >
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>                    
+        </div>
+    </div>
+              
+
+
+<%- include('../partials/footer") %>

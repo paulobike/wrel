@@ -1,0 +1,203 @@
+<%- include('../partials/header") %>
+    <!-- Header -->
+    <div class="header bg-default  pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-12">
+              <h6 class="h2 text-white d-inline-block mb-0">KYC applications</h6>
+              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                  <li class="breadcrumb-item"><a href="/"><i class="fas fa-home text-default"></i></a></li>
+                  <li class="breadcrumb-item active">KYC applications</li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--6" style="overflow-x: hidden;">
+        <div class="row mt-4 justify-content-center">
+            <div class="">
+                <div class="card" style="max-width: 95vw;">      
+                    <div class="table-responsive">
+                    <!-- Projects table -->
+                        <table class="table align-items-center table-flush">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th class="text-capitalize">Username</th>                                 
+                                    <th class="text-capitalize">Firstname</th>
+                                    <th class="text-capitalize">Lastname</th>
+                                    <th class="text-capitalize">Gender</th>
+                                    <th class="text-capitalize">Status</th>
+                                    <th class="text-capitalize">Date</th>
+                                    <th class="text-capitalize">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                              <% if(kycs.length) { %>
+                                <% kycs.forEach((kyc, i) => { %>
+                                    <tr style="text-align:center" data-toggle="modal" data-target=".bd-example-modal-lg" data-kycId="<%=i %>" onclick="changeContent(event)">
+                                        <td><a href="/admin/users/<%= kyc.user.id %>"><%= kyc.user.username %></a></td>
+                                        <td><%= kyc.firstname %></td>
+                                        <td><%= kyc.lastname %></td>
+                                        <td><%= kyc.gender %></td>
+                                        <td><%= kyc.status %></td>
+                                        <td><%= ((new Date(kyc.date)).toLocaleDateString()) %></td>
+                                        <td>
+                                            <% if(kyc.status === 'pending') { %>
+                                              <form action="/admin/kyc/<%= kyc._id %>?_method=PUT" method="POST" class="d-inline" onclick="event.stopPropagation()">
+                                                <input type="hidden" name="action" value="approve">
+                                                <button type="submit" class="btn btn-sm btn-success">Approve</button>
+                                              </form>
+                                              <form action="/admin/kyc/<%= kyc._id %>?_method=PUT" method="POST" class="d-inline" onclick="event.stopPropagation()">
+                                                <input type="hidden" name="action" value="reject">
+                                                <button type="submit" class="btn btn-sm btn-warning">Reject</button>
+                                              </form>
+                                            <% } else { %>
+                                              <form action="/admin/kyc/<%= kyc._id %>?_method=DELETE" method="POST" class="d-inline" onclick="event.stopPropagation()"
+                                                onsubmit="return confirm('Are you sure you want to delete this document?');">
+                                                <input type="hidden" name="action" value="approve">
+                                                <button type="submit" class="btn btn-sm btn-warning">
+                                                  <i class="fa fa-trash-alt"></i>
+                                                </button>
+                                              </form>
+                                            <% } %>
+                                          </td>
+                                    </tr>
+                                <% }); %>  
+                              <% } else { %>
+                                <tr>
+                                  <th colspan="4" class="lead text-center" style="font-size: 1.25rem; font-weight: 300;">
+                                    No kyc applications yet deposits yet!
+                                  </th>
+                                </tr>
+                              <% } %>                              
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-12 py-3" style="border-top: 1px solid rgba(0,0,0,.1)">
+                      <div class="row text-center">
+                        <div class="col-4">
+                          <a href="<%= `/admin/kyc?offset=${offset - 20}` %>" 
+                          class="btn btn-primary p-1 float-right <%= offset <= 0? 'disabled': '' %>" 
+                          style="width: 30px;">
+                            <
+                          </a>
+                        </div>
+                        <div class="col-4">
+                          <div class="dropdown">
+                            <button class="btn btn-outline-secondary dropdown-toggle text-lowercase p-1" 
+                            type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" 
+                            aria-expanded="false" style="color:var(--primary); border-color:var(--primary);">
+                                <%= offset + 1 %> to <%- offset + 18 %>
+                            </button>
+                            <div class="dropdown-menu" style="z-index: 1030;">
+                                <% for (var i = 0; i <= count; i += 20) { %>
+                                    <a href="<%= `/admin/kyc?offset=${i}` %>" 
+                                    class="btn btn-secondary dropdown-item text-lowercase <%= (i + 1) === offset? 'active disabled': '' %>">
+                                      <%= i + 1 %> to <%= i+20 %>
+                                    </a>
+                                <% }; %>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-4">
+                          <a href="<%= `/admin/kyc?offset=${offset + 20}` %>" 
+                          class="btn btn-primary p-1 float-left <%= offset >= count - 20? 'disabled': '' %>" 
+                          style="width: 30px;">
+                            >
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>                    
+        </div>
+    </div>
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        
+        <div class="modal-content p-2">
+          <div>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="width: 25px;border: 1px solid;border-radius: 50%;height: 25px;display: flex;justify-content: center;align-items: center;float: right;">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+            
+          <div class="row justify-content-center">
+            <div class="col-sm-5">
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="heading-small text-muted mb-4">Document <span class="float-right" id="fileType"></span></h6>
+                  <div class="card">
+                    <img src="" class="card-img-top" id="file" alt="...">
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <a href="" id="file-view">View document</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-7">
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="heading-small text-muted mb-4">Personal Information</h6>
+                  <div class="border rounded">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item"><span>Firstname</span><span class="float-right text-primary heading-small" id="firstname"></span></li>
+                      <li class="list-group-item"><span>Lastname</span><span class="float-right text-primary heading-small" id="lastname"></span></li>
+                      <li class="list-group-item"><span>Email</span><span class="float-right text-primary heading-small" id="email"></span></li>
+                      <li class="list-group-item"><span>Tel</span><span class="float-right text-primary heading-small" id="phone"></span></li>
+                      <li class="list-group-item"><span>DOB</span><span class="float-right text-primary heading-small" id="dob"></span></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row text-left w-100">
+              <div class="col-md-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h6 class="heading-small text-muted mb-4">Address</h6>
+                    <p id="address"></p>
+                    <p id="country"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="visibility: hidden;" id="kycs"><%- JSON.stringify(kycs) %></div>
+    <script>
+      var kycs = document.querySelector('#kycs');
+      var firstname = document.querySelector('#firstname');
+      var lastname = document.querySelector('#lastname');
+      var file = document.querySelector('#file');
+      var fileView = document.querySelector('#file-view');
+      var fileType = document.querySelector('#fileType');
+      var phone = document.querySelector('#phone');
+      var email = document.querySelector('#email');
+      var address = document.querySelector('#address');
+      var country = document.querySelector('#country');
+      var dob = document.querySelector('#dob');
+      kycsObj = JSON.parse(kycs.textContent);
+      kycs.remove();
+      function changeContent(e) {
+        let kycId = Number(e.currentTarget.dataset.kycid);
+        file.src = fileView.href = '/' + kycsObj[kycId].file;
+        dob.textContent = new Date(kycsObj[kycId].dob).toDateString();
+        address.textContent = kycsObj[kycId].street + ', ' + kycsObj[kycId].city + '. ' + kycsObj[kycId].state;
+        [firstname, lastname, fileType, phone, email, country]
+        .forEach(el => {
+          el.textContent = kycsObj[kycId][el.id];
+        });
+      }
+    </script>
+      <!-- Footer -->
+
+<%- include('../partials/footer") %>

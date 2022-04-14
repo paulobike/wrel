@@ -1,0 +1,174 @@
+<%- include ("partials/header") %>
+
+<!-- Header -->
+    <div class="header bg-default pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-lg-6 col-7">
+              <h6 class="h2 text-white d-inline-block mb-0">Investment History</h6>
+              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                  <li class="breadcrumb-item"><a href="#"><i class="fas fa-home text-default"></i></a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Investment History</li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid mt--6">
+      <div class="row justify-content-center">
+        <div class=" col ">
+          <div class="card">
+            <div class="card-body">
+              <div class="h4 mb-3">
+                Active investment:
+              </div> 
+              
+              <div class="row">
+                <%- packages.findIndex(package => package.active) === -1 ? '<div class="lead m-4">No active investments</div>' : ''%>
+                <% packages.forEach(package => { %>
+                  <% if(package.active) { %>
+                    <div class="col-lg-4 col-md-6">
+                      <div class="card">
+                        <div class="table-responsive">
+                          <!-- Projects table -->
+                          <table class="table align-items-center table-flush">
+                            <tbody>
+                              <tr>
+                                <th scope="row">
+                                  <i class="fas fa-clock text-primary mr-3"></i>Date:
+                                </th>
+                                <td class="pl-0">
+                                    <%= displayDate(new Date(package.date))%> UTC
+                                </td>
+                              <tr>
+                                <tr>
+                                  <th scope="row">
+                                    <i class="fas fa-clock text-primary mr-3"></i>Due:
+                                  </th>
+                                  <td class="pl-0">
+                                    <% let duration = package.duration %>
+                                    <%= displayDate(new Date(
+                                      package.date.getFullYear(),
+                                      package.date.getMonth(),
+                                      package.date.getDate(),
+                                      package.date.getHours() + Number(duration),
+                                      package.date.getMinutes())) %> UTC
+                                  </td>
+                                <tr>
+                                <th scope="row">
+                                  <i class="ni ni-chart-pie-35 text-primary mr-3"></i>Type:
+                                </th>
+                                <td class="pl-0">
+                                  <%= package.name %>
+                                </td>
+                              </tr>
+                              <tr>
+                                <th scope="row">
+                                  <i class="fas fa-coins text-primary mr-3"></i>Investment:
+                                </th>
+                                <td class="pl-0">
+                                  <%= config.currency_unit %><%= package.investment %>
+                                </td>
+                              </tr>
+                              <tr>
+                                <th scope="row">
+                                  <i class="fas fa-clock text-primary mr-3"></i>Progress:
+                                </th>
+                                 <td class="pl-0">
+                                   <% let max = package.toEarn %>
+                                   <% let current = package.dailyEarnings %>
+                                   <div class="progress" style="height: 5px; width: 90%;">
+                                     <div class="progress-bar" role="progressbar" 
+                                     aria-valuenow="<%= current %>"
+                                     aria-valuemin="0" 
+                                     aria-valuemax="<%= max %>"
+                                     style="width: <%= Math.round((current / max) * 100 * 100) / 100 %>%;"></div>
+                                   </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  <% } %>
+                <% }) %>
+              </div>
+              <div class="h4 mb-3">
+                Completed investments:
+              </div> 
+              <div class="row">
+                <%- packages.findIndex(package => !package.active) === -1 ? '<div class="lead m-4">No completed investments</div>' : ''%>
+                <% packages.forEach(package => { %>
+                  <% if(!package.active) { %>
+                    <div class="col-lg-4 col-md-6">
+                      <div class="card">
+                        <div class="table-responsive">
+                          <!-- Projects table -->
+                          <table class="table align-items-center table-flush">
+                            <tbody>
+                                <tr>
+                                  <th scope="row">
+                                    <i class="fas fa-clock text-success mr-3"></i>Completed:
+                                  </th>
+                                  <td class="pl-0">
+                                  <%= displayDate(new Date(
+                                    package.date.getFullYear(), 
+                                    package.date.getMonth(), 
+                                    package.date.getDate() + 7, 
+                                    package.date.getHours(), 
+                                    package.date.getMinutes()
+                                    )) %> UTC
+                                  </td>
+                                <tr>
+                                <th scope="row">
+                                  <i class="ni ni-chart-pie-35 text-success mr-3"></i>Type:
+                                </th>
+                                <td class="pl-0">
+                                  <%= package.name %>
+                                </td>
+                              </tr>
+                              <tr>
+                                <th scope="row">
+                                  <i class="fas fa-coins text-success mr-3"></i>Investment:
+                                </th>
+                                <td class="pl-0">
+                                  <%= config.currency_unit %><%= package.investment %>
+                                </td>
+                              </tr>
+                              <tr>
+                                <th scope="row">
+                                  <i class="fas fa-clock text-success mr-3"></i>Return:
+                                </th>
+                                 <td class="pl-0">
+                                  <%= config.currency_unit %><%= package.dailyEarnings %>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  <% } %>
+                <% }) %>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+        <!-- Footer -->
+    <% function displayDate(dt) { %>
+      <% var DD = (dt.getDate()); %>
+      <% var MM = ((dt.getMonth() + 1)); %>
+      <% var YYYY = dt.getFullYear(); %>
+      <% var hh = (dt.getHours()); %>
+      <% var mm = ("0" + dt.getMinutes()).slice(-2); %>
+      <% return DD + "-" + MM + "-" + YYYY + " " + hh + ":" + mm; %>
+    <% } %>
+<%- include ("partials/footer") %>

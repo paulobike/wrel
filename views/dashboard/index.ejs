@@ -1,0 +1,94 @@
+<%- include ("partials/header") %>
+  <div id="s63">
+
+
+
+
+
+    <p>
+      <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    </p>
+    <style type="text/css">
+      body {
+        background-color: #fff;
+      }
+
+      #participant-center-list table table.lc_Table {
+        -moz-border: 0px solid #fff;
+        -webkit-border: 0px solid #fff;
+        border: 0px solid #fff;
+      }
+
+      .fl-page {
+        background-color: #fff !important;
+      }
+
+      #participant-center-list table {
+        border: none;
+        width: 100%;
+        margin: 0px;
+      }
+
+      .lc_Table .lc_Cell {
+        width: 50%;
+        border: 0px;
+      }
+
+      .lc_Cell p a:link,
+      .lc_Cell p a:visited {
+        color: #0075c9 !important;
+        text-decoration: none;
+        font-size: 1.2em !important;
+      }
+
+      .lc_Cell p a:hover {
+        text-decoration: underline;
+      }
+
+      #log-btn-container {
+        width: 150px;
+        margin: 1em auto 0em auto;
+        text-align: center;
+      }
+
+      @media screen and (max-width:768px) {
+        .col-sm-12 {
+          padding-left: 2em !important;
+          float: left !important;
+        }
+
+        #log-btn-container {
+          width: 100%;
+          margin-left: 0;
+        }
+
+        .log-btn {
+          width: 100%;
+          margin: .5em 0;
+        }
+      }
+    </style>
+    <div class="col-sm-12" style="max-width: 1140px; width: 100%; margin: .5em auto; float: none;">
+      <h2>Your Account</h2>
+      <p>Welcome back, Samuel.</p>
+      <div id="consProfile">
+        <p><a href="/dashboard/profile"><em class="fa fa-user-circle"></em> &nbsp; Click here to update your
+            profile.</a></p>
+        <p><a href="/dashboard/emailpref"><em class="fa fa-envelope"></em> &nbsp; Click here to update
+            your email preferences.</a></p>
+      </div>
+      <div class="clear">&nbsp;</div>
+      <div class="col-sm-4">&nbsp;</div>
+      <div class="col-sm-4">
+        <div align="center"><button class="step-button action-button" style="min-width: 150px;"
+            onclick="window.open('/account/logout');">Logout</button>
+        </div>
+      </div>
+      <div class="col-sm-4">&nbsp;</div>
+    </div>
+    <div class="clear">&nbsp;</div>
+    <p></p>
+  </div>
+
+  <%- include ("partials/footer") %>

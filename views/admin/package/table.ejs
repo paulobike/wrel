@@ -1,0 +1,73 @@
+<%- include('../partials/header") %>
+    <!-- Header -->
+    <div class="header bg-default  pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-12">
+              <h6 class="h2 text-white d-inline-block mb-0">investments</h6>
+              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                  <li class="breadcrumb-item"><a href="/"><i class="fas fa-home text-default"></i></a></li>
+                  <li class="breadcrumb-item active">investments</li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+        <div class="row mt-4 justify-content-center">
+            <div class="">
+                <div class="card" style="max-width: 95vw;">           
+                    <div class="table-responsive">
+                    <!-- Projects table -->
+                        <table class="table align-items-center table-flush">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th class="text-capitalize">User</th>
+                                    <th class="text-capitalize">Investment</th>
+                                    <th class="text-capitalize">Return</th>
+                                    <th class="text-capitalize">Type</th>                           
+                                    <th class="text-capitalize">Date</th>
+                                    <th class="text-capitalize">Duration</th>
+                                    <th class="text-capitalize">Time left</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                              <% if(packages.length) { %>
+                                <% packages.forEach((package) => { %>
+                                  <% let duration = package.duration %>
+                                  <% let timeLeft = (duration - duration * (package.dailyEarnings / package.toEarn)) %>
+                                    <tr>
+                                        <td>
+                                            <a href="/admin/users/<%= package.user.id %>"><%= package.user.username %></a>
+                                        </td>
+                                        <td><%= package.investment %></td>
+                                        <td><%= package.toEarn %></td>
+                                        <td><%= package.name %></td>
+                                        <td><%= ((new Date(package.date)).toLocaleDateString()) %></td>                                      
+                                        <td><%= duration / 24 %></td>                                      
+                                        <td><%= timeLeft / 24 == 0? 'completed': (Math.round(timeLeft / 24) + ' days' + (timeLeft % 24 > 0? ' ' + Math.round(timeLeft % 24) + ' hrs': '')) %></td>
+                                    </tr>
+                                <% }); %> 
+                              <% } else { %>
+                                <tr>
+                                  <th colspan="4" class="lead text-center" style="font-size: 1.25rem; font-weight: 300;">
+                                    No investments yet!
+                                  </th>
+                                </tr>
+                              <% } %>                               
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>                    
+        </div>
+    </div>
+      
+      <!-- Footer -->
+
+<%- include('../partials/footer") %>

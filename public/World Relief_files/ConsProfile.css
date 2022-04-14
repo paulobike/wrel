@@ -1,0 +1,311 @@
+.cons-pers td, .cons-pers p, .cons-pers label, .cons-pers fieldset, .cons-pers .Explicit {
+	font-size: 12px;
+	color: #676A6C;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.cons-pers table {
+	width: 100%;
+}
+
+/* Heading for Consituent Profile */
+.cons-prof h3 {
+	margin: 0 0 0 0;
+	font-size: 14px;
+	font-family: 'Open Sans', sans-serif;
+	color: #676A6C;
+	font-weight: bold;
+	padding: 25px 0px 8px 0px;
+}
+
+.cons-prof .line {
+	margin: 8px 0px 2px 0px;
+	border-bottom: 2px solid #E7EAEC;
+}
+
+.cons-prof .SectionHead {
+	color: #333;
+}
+
+.cons-pers table td.heading {
+	border: none;
+	padding: 6px 0 0 50px;
+	background: none;
+}
+
+.cons-pers td.spacer {
+	padding: 0;
+	background: #fff;
+	font-size: 8px;
+}
+
+.cons-pers fieldset {
+	margin-bottom: 15px;
+	width: 100%;
+	padding: 0;
+}
+
+.cons-pers td fieldset {
+	margin: 0;
+}
+
+.cons-pers fieldset fieldset {
+	margin: 0;
+}
+
+.cons-pers td {
+	padding: 6px 6px;
+	background: #F8F8F9;
+}
+
+.cons-pers .grid td {
+	border-bottom: 2px solid #fff;
+}
+
+.cons-pers .grid .nogrid td {
+	border: none;
+	padding: 0;
+}
+
+.cons-pers label {
+	font-weight: 600;
+}
+
+.cons-pers label.checkbox, .cons-pers label.radio {
+	font-weight: 600;
+}
+
+.cons-pers input {
+	margin: 0;
+}
+
+/* Label Alignment */
+.cons-pers .label {
+	text-align: right;
+	color: #676A6C;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
+}
+
+.cons-pers .cons-name p.label {
+	margin: 0;
+	text-align: left;
+}
+
+.cons-pers h4 {
+	margin: 0;
+	font-size: 13px;
+	color: #676A6C;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
+}
+
+.cons-pers p.Hint,
+.cons-pers p.Hint-small {
+	font-size: 12px;
+	color: #676A6C;
+}
+
+.cons-pers p.Hint-small {
+	font-size: 11px;
+}
+
+.cons-pers div.Hint {
+	margin-bottom: 25px;
+}
+
+.cons-pers .req {
+	color: #c00;
+}
+
+.cons-pers input#op\.saveCons-top {
+	margin-right: 10px;
+}
+
+.cons-pers input#op\.cnclAddCons-top,
+.cons-pers input#op\.cnclAddCons {
+	text-decoration: none;
+	background-color: #f3f3f4;
+	color: #676a6c;
+	padding: 5px 14px 5px 14px;
+	border: 1px solid #f3f3f4;
+	border-radius: 3px;
+}
+
+
+.cons-nav {
+	margin: 0 0 20px 0;
+	padding: 5px;
+	list-style: none;
+	color: #333;
+}
+
+.cons-nav li {
+	float: left;
+	padding: 0 5px;
+	border-left: 1px solid #666;
+	font-weight: bold;
+}
+
+.cons-nav li.first {
+	border: none;
+}
+
+.cons-nav li a {
+	font-weight: normal;
+}
+
+
+
+.serv-cent {
+	padding: 5px;
+}
+
+.serv-cent p, .serv-cent td {
+	font-size: 12px;
+	color: #333;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.serv-cent .heading td {
+	padding: 15px 0 0 0;
+	background: none;
+}
+
+.serv-cent .heading td h3 {
+	margin: 0;
+}
+
+.serv-cent .cons-nav {
+	margin: 0;
+}
+
+/* bug 59333 */
+.serv-cent .right-padding {
+	padding-right: 20px;
+}
+
+.serv-cent .SuccessMessage {
+	color: green;
+	font-size: 14px;
+}
+
+.serv-cent .ErrorMessage {
+	color: red;
+	font-size: 14px;
+}
+
+
+#ConsSvcHelpMessage {
+	float: right;
+}
+
+
+.cons-prof .ErrorMessage, .cons-pers .ErrorMessage {
+	color: #f00;
+	font-size: 14px;
+}
+
+/* For New Email Preference Page */
+.user_email_pref li.unsubscribed_interest {
+	color: gray;
+}
+
+.user_email_pref .center_opt_out_text, .center_not_member_text {
+	color: gray;
+}
+
+.user_email_pref ul {
+	list-style-type: none;
+	margin-left: 0px;
+	margin-top: 0px;
+	padding-left: 0px;
+}
+
+.user_email_pref ul li {
+	margin-left: 0px;
+	padding-left: 0px;
+}
+
+.user_email_pref h2 {
+	margin-bottom: 0px;
+}
+
+.user_email_pref h3 {
+	margin-bottom: 0px;
+}
+
+#email_pref_admin_centers img {
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#email_pref_admin_centers .boxinator_links_block span {
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#email_pref_admin_centers .boxinator_links_block a {
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.yui-panel-container .scrollable_boxinator {
+	overflow: auto;
+	overflow-x: hidden;
+	overflow-y: auto;
+	height: 400px;
+	padding-right: 40px;
+}
+
+.clearfix:after {
+	content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+/* For IE */
+.clearfix {
+    *zoom: 1;     /* triggers hasLayout */
+}  
+/* Only IE can see inside the conditional comment
+and read this CSS rule. Don't ever use a normal HTML
+comment inside the CC or it will close prematurely. */
+
+#cons_admin_clone_email_error #cons_admin_clone_email_error_title_bar {
+  color: #990000;
+  font-weight: bold;
+  display: inline-block;
+  width:5%;
+  vertical-align: top;
+}
+#cons_admin_clone_email_error #cons_admin_clone_email_error_main {
+  display: inline-block;
+  width: 94%;
+  vertical-align: top;
+}
+#cons_admin_clone_email_error #cons_admin_clone_email_error_main #cons_admin_clone_email_error_header {
+  display: block;
+  vertical-align: top;
+  width: 100%;
+  line-height:150%;
+  padding: 0px 0px 10px 0px;
+}
+#cons_admin_clone_email_error #cons_admin_clone_email_error_main .option {
+  text-align: left;
+  display: inline-block;
+  vertical-align: top;
+  max-width: 60%;
+}
+#cons_admin_clone_email_error #cons_admin_clone_email_error_main #cons_admin_clone_email_error_divider {
+  text-align: center;
+  display: inline-block;
+  vertical-align: top;
+  font-style: italic;
+  padding: 0px 20px 0px 20px;
+}

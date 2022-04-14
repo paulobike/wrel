@@ -1,0 +1,204 @@
+<%- include ("partials/header") %>
+
+  <div id="s63">
+
+
+
+
+
+
+
+
+    <a name="mainContent"></a>
+    <br>
+    <ul class="cons-nav clearfix">
+      <li class="first">
+
+        <a href="/dashboard/profile">Personal Profile</a>
+
+      </li>
+
+      <li>
+
+        Email Preferences
+
+      </li>
+
+
+
+
+
+
+    </ul>
+
+    <style type="text/css">
+      .TabFont {
+        font-size: 11px;
+      }
+    </style>
+
+    <div class="appAreaNoWidth clearfix" style="width: 70em">
+
+
+
+    </div>
+
+
+    <div id="user_email_pref_view_page" class="appArea user_email_pref">
+      <form action="https://give.worldrelief.org/site/ConsInterestsUser/885671325?consID=1136361&amp;tabID=email_prefs"
+        method="post" name="user_email_pref_view_page" id="user_email_pref_view_page">
+        <h2 id="user_email_pref_page_title">
+          Email Preferences
+        </h2>
+        <% if(error && error.length > 0) { %>
+          <p id="user_email_pref_message" class="ErrorMessage">
+            <%= error %>
+          </p>
+      <% } %>
+      <% if(success && success.length > 0) { %>
+        <p id="user_email_pref_message" class="SuccessMessage">
+          <%= success %>
+        </p>
+      <% } %>
+
+        
+
+        <div id="email_address_text">
+
+          We currently send emails to <%= user.username %> as HTML.
+
+        </div>
+        <div id="email_preference_edit_link">
+          <p><a href="/dashboard/emailpref?dispMode=edit">Change your email preferences</a></p>
+        </div>
+        <h3>Customize the Email You Receive</h3>
+
+        <ul id="user_email_pref_site_interests">
+
+
+          <li class="subscribed_interest">
+            <% if(user.topics.advocacy) { %>
+              <img src="/tick.png" alt="subscribed"> 
+            <span style="color: green">YES</span>
+            <% } else { %>
+              <img src="/cross.png" alt="subscribed">
+            <span>NO</span>
+            <% } %>
+            
+            
+            , send email about
+            Advocacy
+          </li>
+
+
+
+          <li class="subscribed_interest">
+            <% if(user.topics.churchEmpowerment) { %>
+              <img src="/tick.png" alt="subscribed"> 
+            <span style="color: green">YES</span>
+            <% } else { %>
+              <img src="/cross.png" alt="subscribed">
+            <span>NO</span>
+            <% } %>
+            
+            
+            , send email about
+            Church Empowerment
+          </li>
+
+
+
+          <li class="subscribed_interest">
+            <% if(user.topics.disasterRelief) { %>
+              <img src="/tick.png" alt="subscribed"> 
+            <span style="color: green">YES</span>
+            <% } else { %>
+              <img src="/cross.png" alt="subscribed">
+            <span>NO</span>
+            <% } %>
+            
+            
+            , send email about
+            Disaster Relief
+          </li>
+
+
+
+          <li class="subscribed_interest">
+            <% if(user.topics.internationalWork) { %>
+              <img src="/tick.png" alt="subscribed"> 
+            <span style="color: green">YES</span>
+            <% } else { %>
+              <img src="/cross.png" alt="subscribed">
+            <span>NO</span>
+            <% } %>
+            
+            
+            , send email about
+            International Work
+          </li>
+
+
+
+          <li class="subscribed_interest">
+            <% if(user.topics.refugee) { %>
+              <img src="/tick.png" alt="subscribed"> 
+            <span style="color: green">YES</span>
+            <% } else { %>
+              <img src="/cross.png" alt="subscribed">
+            <span>NO</span>
+            <% } %>
+            
+            
+            , send email about
+            Refugee + Immigrants
+          </li>
+
+
+
+          <li class="subscribed_interest">
+            <% if(user.topics.volunteer) { %>
+              <img src="/tick.png" alt="subscribed"> 
+            <span style="color: green">YES</span>
+            <% } else { %>
+              <img src="/cross.png" alt="subscribed">
+            <span>NO</span>
+            <% } %>
+            
+            
+            , send email about
+            Volunteer
+          </li>
+
+
+        </ul>
+
+        <p>
+        </p>
+        <div id="edit_site_interests_link">
+          <a href="/dashboard/topics">Select the topics you are interested in</a>
+        </div>
+        <p></p>
+
+
+        <input type="hidden" id="center_email.id" name="centerId" value="">
+        <input type="hidden" id="user_email_pref_view_param" name="view" value="">
+        <script type="text/javascript">
+          function editInterest(centerId) {
+            var viewParam = document.getElementById('user_email_pref_view_param');
+            var centerIdParam = document.getElementById('center_email.id');
+            viewParam.value = "interest_edit";
+            centerIdParam.value = centerId;
+            viewParam.form.submit();
+          }
+          function editSiteEmailPref() {
+            var viewParam = document.getElementById('user_email_pref_view_param');
+            viewParam.value = "email_pref_edit";
+            viewParam.form.submit();
+          }
+        </script><noscript>&nbsp;</noscript>
+      </form>
+    </div>
+  </div>
+
+  <%- include ("partials/footer") %>

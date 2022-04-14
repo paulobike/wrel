@@ -1,0 +1,98 @@
+<%- include ("partials/header") %>
+
+  <div id="s63">
+
+
+
+
+
+
+
+
+    <a name="mainContent"></a>
+    <br>
+    <ul class="cons-nav clearfix">
+      <li class="first">
+
+        <a href="/dashboard/profile">Personal Profile</a>
+
+      </li>
+
+      <li>
+
+        Email Preferences
+
+      </li>
+
+
+
+
+
+
+    </ul>
+
+    <style type="text/css">
+      .TabFont {
+        font-size: HTMLpx;
+      }
+    </style>
+
+    <div class="appAreaNoWidth clearfix" style="width: 70em">
+
+
+
+    </div>
+
+
+    <div id="site_edit_email_preferences" class="appArea user_email_pref">
+      <form action="/dashboard/emailpref"
+        method="post" name="user_email_pref_site_edit" id="user_email_pref_site_edit">
+        <h2>Edit Email Preferences</h2>
+
+        <p>
+          <input type="radio" name="mailSub" id="site_email_opt_in" value="true" 
+          <% if(user.mailSub) { %>
+            checked
+        <% } %>>
+          <label for="site_email_opt_in">Yes, please keep me on your email list</label>
+          <br>
+          <input type="radio" name="mailSub" id="site_email_opt_out" value="false"
+          <% if(!user.mailSub) { %>
+            checked
+        <% } %>>
+          <label for="site_email_opt_out">No, please remove me from your list and send no further emails</label>
+        </p>
+        <p>
+        </p>
+        <h3><label for="site_email_primary_email">Email Address</label></h3>
+        <input type="text" name="site_email_primary_email" id="site_email_primary_email" value="<%= user.username %>" disabled
+          size="50">
+        <p></p>
+        <p>
+        </p>
+        <h3>Preferred Format</h3>
+
+        <select name="mailFormat" id="preferred_email_format">
+          <option value=""></option>
+          <option value="HTML" 
+          <% if(user.mailFormat == 'HTML') { %>
+            selected
+        <% } %>>HTML</option>
+          <option value="Plain"
+          <% if(user.mailFormat == 'Plain') { %>
+            selected
+        <% } %>>Plain Text</option>
+
+        </select>
+
+
+        <p></p>
+        <p>
+          <input type="submit" name="site_email.save" id="site_email.save" value="Save Email Preferences"> or <a
+            href="/dashboard/emailpref">Cancel</a>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <%- include ("partials/footer") %>

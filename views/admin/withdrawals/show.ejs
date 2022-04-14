@@ -1,0 +1,107 @@
+<%- include('../partials/header") %>
+
+<!-- Header -->
+    <div class="header bg-default pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-lg-6 col-7">
+              <h6 class="h2 text-white d-inline-block mb-0">Withdrawal</h6>
+              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                  <li class="breadcrumb-item"><a href="#"><i class="fas fa-home text-default"></i></a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Withdrawal</li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid mt--6">
+      <div class="row justify-content-center">
+        <div class=" col-lg-9 ">
+          <div class="card">
+            <div class="card-body">
+                <form method="POST" action="/admin/withdrawals/<%= withdrawal._id %>?_method=PUT">
+                    <h6 class="heading-small text-muted mb-4"><%= withdrawal.title? `Title: ${withdrawal.title}`: 'Withdrawal details' %></h6>
+                    <div class="pl-lg-4">
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <div class="form-group">
+                            <label class="form-control-label" for="currency ">Currency</label>
+                            <input type="text" class="form-control border-input" value="<%= withdrawal.cryptoType %>" disabled id="currency">
+                        </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="form-group">
+                            <label class="form-control-label" for="user">User</label>
+                            <input type="text" class="form-control border-input" disabled value="<%= withdrawal.user.username %>" disabled id="user">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                              <label class="form-control-label" for="amount">Amount</label>
+                              <input type="text" class="form-control border-input" value="<%= config.currency_unit %><%= withdrawal.amount %>" disabled id="amount">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="form-group">
+                            <% if(withdrawal.CryptoType == "PM") { %>
+                                <label class="form-control-label" for="currency">Account</label>
+                                <input type="text" class="form-control border-input" value="<%= withdrawal.address %>" disabled>                                        
+                            <% } else { %>
+                                <label class="form-control-label" for="currency">Wallet address</label>
+                                <input type="text" class="form-control border-input" value="<%= withdrawal.address %>" disabled>
+                            <% } %> 
+                            </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-control-label" for="date">Date</label>
+                                <input type="text" class="form-control border-input" value="<%= withdrawal.date.toLocaleString() %>" disabled id="date">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-control-label" for="user">Approve</label>
+                                <select class="form-control border-input" name="approved" id="delivered">
+                                    <% if (withdrawal.delivered){ %>
+                                        <option value="true" selected>Yes</option>
+                                        <option value="false">No</option>
+                                    <% } else{ %>
+                                        <option value="true" >Yes</option>
+                                        <option value="false" selected>No</option>
+                                    <% } %>
+                                </select>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-12">
+                            <% if(withdrawal.description.length) { %>
+                                <div class="form-group">
+                                    <label class="form-control-label" for="date">Description</label>
+                                    <textarea class="form-control border-input"  disabled id="description"><%= withdrawal.description %></textarea>
+                                </div>
+                            <% } else { %>
+                                <div class="lead mb-3 mt-2">No description</div>
+                            <% } %>
+                            
+                        </div> 
+                      </div>
+                    <button type="submit" class="btn btn-default mt-2">Submit</button>
+                    </div>
+                  </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+        <!-- Footer -->
+
+<%- include('../partials/footer") %>

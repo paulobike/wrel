@@ -1,0 +1,162 @@
+<%- include ("../partials/header") %>
+
+<!-- Header -->
+    <div class="header bg-default pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-lg-6 col-7">
+              <h6 class="h2 text-white d-inline-block mb-0">KYC application</h6>
+              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                  <li class="breadcrumb-item"><a href="#"><i class="fas fa-home text-default"></i></a></li>
+                  <li class="breadcrumb-item active" aria-current="page">KYC application</li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid mt--6">
+      <div class="row justify-content-center">
+        <div class=" col-lg-9 ">
+          <div class="card">
+            <div class="card-body">
+                <form method="POST" action="/dashboard/kyc" enctype="multipart/form-data">
+                    <h6 class="heading-small text-muted mb-4">Personal information</h6>
+                    <div class="pl-lg-4">
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <div class="form-group">
+                            <label class="form-control-label" for="firstname">Firstname</label>
+                            <input required type="text" id="firstname" class="form-control" placeholder="John" name="firstname" value="<%= user.firstname %>">
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-control-label" for="lastname">Lastname</label>
+                                <input required type="text" id="lastname" class="form-control" placeholder="Doe" name="lastname" value="<%= user.lastname %>">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-control-label" for="email">Email</label>
+                                <input required type="email" id="email" class="form-control" placeholder="johndoe@gmail.com" name="email"  value="<%= user.username %>">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-control-label" for="phone">Phone number</label>
+                                <input required type="text" id="phone" class="form-control" placeholder="+1(xxx) xxx-xxxx" name="phone">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-control-label" for="gender">Gender</label>
+                                <select name="gender" id="" class="form-control custom-select" required>
+                                    <option value="" selected disabled>Choose gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-control-label" for="dob">Date of birth</label>
+                                <input required type="date" id="dob" class="form-control" name="dob">
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <hr>
+                    <h6 class="heading-small text-muted mb-4">Address</h6>
+                    <div class="pl-lg-4">
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <div class="form-group">
+                            <label class="form-control-label" for="country">Country</label>
+                            <select name="country" id="country" class="form-control custom-select" required>
+                              <%- countries %>
+                          </select>
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-control-label" for="state">State/Province</label>
+                                <input required type="text" id="state" class="form-control" placeholder="Massachusetts" name="state">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-control-label" for="city">City</label>
+                                <input required type="text" id="city" class="form-control" placeholder="Boston" name="city">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-control-label" for="street">House address</label>
+                                <input required type="text" id="street" class="form-control" placeholder="24 Example street, Allen" name="street">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-control-label" for="zip-code">Zip code</label>
+                                <input required type="text" id="zip-code" class="form-control" name="zipCode" placeholder="111111">
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <hr>
+                    <h6 class="heading-small text-muted mb-4">Document upload</h6>
+                    <div class="pl-lg-4">
+                        <div class="row">
+                            <div class="col-12 mb-4">
+                                <small>To verify your identity, we ask that you upload a clear scan of your valid official identification document issued by the government.</small>
+                            </div>                            
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="file-type">File type</label>
+                                    <select name="fileType" id="" class="form-control custom-select" required>
+                                        <option value="" selected disabled>Choose a file type</option>
+                                        <option value="passport">International passport</option>
+                                        <option value="id-card">National ID card</option>
+                                        <option value="drivers-liscence">Driver's liscence</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                <label class="form-control-label" for="file">Document</label>
+                                <div class="custom-file">
+                                    <input required type="file" id="file" class="form-control" name="file">
+                                    <label class="custom-file-label" for="file">No file selected</label>
+                                </div>
+                                
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    <button type="submit" class="btn btn-default mt-2">Submit</button>
+                  </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+        let fileInput = document.querySelector('#file');
+        let fileLabel = document.querySelector('.custom-file-label');
+        fileInput.addEventListener('change', e => {
+            let fileName = e.target.files[0].name;
+            if(fileName.length > 20) {
+                fileName = fileName.substring(0, 17) + '...';
+            }
+            fileLabel.textContent = fileName;
+        });
+    </script>
+        <!-- Footer -->
+
+<%- include ("../partials/footer") %>

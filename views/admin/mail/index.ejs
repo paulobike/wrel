@@ -1,0 +1,75 @@
+<%- include('../partials/header') %>
+    <!-- Header -->
+    <div class="header bg-default  pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-12">
+              <h6 class="h2 text-white d-inline-block mb-0">Mails</h6>
+              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                  <li class="breadcrumb-item"><a href="/"><i class="fas fa-home text-default"></i></a></li>
+                  <li class="breadcrumb-item active">Mails</li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+        <div class="row mt-4 justify-content-center">
+            <div class="">
+                <div class="card" style="max-width: 95vw; min-width: 40vw;">
+                    <div class="table-responsive">
+                    <!-- Projects table -->
+                        <table class="table align-items-center table-flush">
+                            <thead class="thead-light">
+                                <tr>                           
+                                    <th class="text-capitalize">Date</th>
+                                    <th class="text-capitalize">Sender</th>
+                                    <th class="text-capitalize">Subject</th>
+                                    <th class="text-capitalize">Group</th>
+                                    <th class="text-capitalize">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>       
+                              <% if(mails.length) { %>
+                                <% mails.forEach((mail) => { %>
+                                    <tr style="text-align:center">
+                                        <td><%= ((new Date(mail.date)).toLocaleDateString()) %></td>
+                                        <td><%= mail.sender %></td>
+                                        <td><%= mail.subject %></td>
+                                        <td><%= mail.group %></td>
+                                        <td>
+                                          <a href="/admin/mail/<%= mail._id %>"><i class="fa fa-edit text-default"></i></a>
+                                          <form action="/admin/mail/<%= mail._id %>?_method=DELETE" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this mail?');">
+                                              <button type="submit" data-route="" class="border-0"><i class="fa fa-trash-alt text-warning"></i></a>
+                                          </form>
+                                        </td>
+                                    </tr>
+                                <% }); %>  
+                              <% } else { %>
+                                <tr>
+                                  <th colspan="4" class="lead text-center" style="font-size: 1.25rem; font-weight: 300;">
+                                    No mails yet!
+                                  </th>
+                                </tr>
+                              <% } %>                              
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer">                                        
+                        <h6 class="heading-small text-muted">
+                            <a href="/admin/mail/new" class="">New mail</a>
+                        </h6>
+                    </div>
+                </div>
+            </div>                    
+        </div>
+    </div>
+      
+      <!-- Footer -->
+
+<%- include('../partials/footer') %>

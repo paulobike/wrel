@@ -1,0 +1,899 @@
+<%- include ("partials/header") %>
+
+  <div id="s63">
+
+
+
+
+
+
+
+
+    <a name="mainContent"></a>
+    <br>
+    <ul class="cons-nav clearfix">
+      <li class="first">
+
+        Personal Profile
+
+      </li>
+
+      <li>
+
+        <a href="/dashboard/emailpref">Email Preferences</a>
+
+      </li>
+
+
+
+
+
+
+    </ul>
+
+    <style type="text/css">
+      .TabFont {
+        font-size: 11px;
+      }
+    </style>
+
+    <div class="appAreaNoWidth clearfix" style="width: 70em">
+
+
+
+    </div>
+
+
+    <div id="intro_html" class="appArea">
+
+    </div>
+    <div id="cons_profile">
+      <div class="appArea cons-prof cons-pers">
+
+
+
+
+        <% if(error && error.length > 0) { %>
+          <p class="ErrorMessage">
+            <%= error %>
+          </p>
+      <% } %>
+      <% if(success && success.length > 0) { %>
+        <p class="SuccessMessage">
+          <%= success %>
+        </p>
+      <% } %>
+
+
+        <p>
+
+          <a
+            href="/dashboard/profile?dispMode=edit">Edit
+            Your Profile</a>&nbsp;&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+          &nbsp;&nbsp;<a
+            href="/dashboard/change-password">Change/Reset
+            Password</a>
+
+
+
+
+
+
+
+        </p>
+
+
+
+
+
+
+
+        <form name="EditCons" id="EditCons" method="get"
+          action="/dashboard">
+          <input type="hidden" name="CSRFToken" value="104962F398B41A5C3DBF78E617210124">
+
+
+
+
+
+
+
+
+          <h3>
+            <span="biographical">Biographical Information</span="biographical">
+          </h3>
+          <div class="line"></div>
+          <fieldset>
+
+            <table class="grid" cellspacing="0" cellpadding="0">
+              <tbody>
+                <tr>
+                  <td>
+                    <h4>Name:</h4>
+                  </td>
+                  <td>
+                    <table class="cons-name nogrid" cellspacing="0" cellpadding="0">
+                      <tbody>
+                        <tr>
+
+                          <td>
+
+                            <p class="label">Title:</p>
+
+
+                          </td>
+
+
+                          <td>
+
+                            <p class="label">First Name:</p>
+
+
+                          </td>
+
+
+
+                          <td>
+
+                            <p class="label">Last Name:</p>
+
+
+                          </td>
+
+
+                          <td>
+
+                            <p class="label">Suffix:</p>
+
+
+                          </td>
+
+
+                          <td>
+
+                            <p class="label">Professional Suffix:</p>
+
+
+                          </td>
+
+                        </tr>
+                        <tr>
+
+                          <td class="ROValue">
+
+                            <%= user.title %>
+
+
+
+                          </td>
+
+
+                          <td class="ROValue">
+
+                            <span class="cons_text_value" id="cons_value_first_name">
+                              <%= user.firstname %>
+
+
+                            </span>
+
+
+                          </td>
+
+
+
+                          <td class="ROValue">
+
+                            <span class="cons_text_value" id="cons_value_last_name">
+                              <%= user.lastname %>
+
+
+                            </span>
+
+
+                          </td>
+
+
+                          <td class="ROValue">
+
+                            <%= user.suffix %>
+
+                            &nbsp;
+
+
+
+                          </td>
+
+
+                          <td class="ROValue">
+                            <%= user.professionalSuffix %>
+
+
+                            &nbsp;
+
+
+
+                          </td>
+
+                        </tr>
+                      </tbody>
+                    </table>
+
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+
+
+            <table class="grid" cellspacing="0" cellpadding="0">
+
+
+              <tbody>
+                <tr>
+                  <td width="30%">
+                    <p class="label">User Name:</p>
+
+                  </td>
+                  <td class="ROValue">
+
+                    <span class="cons_text_value" id="cons_value_user_name">
+                      <%= user.username %>
+
+
+                    </span>
+
+
+                  </td>
+                </tr>
+
+
+
+
+
+
+              </tbody>
+            </table>
+
+
+
+            <h3>
+              <span="email_group">Email</span="email_group">
+            </h3>
+            <div class="line"></div>
+            <fieldset>
+              <table class="grid" cellspacing="0" cellpadding="0">
+
+
+                <tbody>
+                  <tr>
+                    <td width="30%">
+                      <p class="label">Email:</p>
+
+                    </td>
+                    <td class="ROValue">
+
+                      <span class="cons_text_value" id="cons_value_primary_email">
+                        <%= user.username %>
+
+
+                      </span>
+
+
+                    </td>
+                  </tr>
+
+
+                  <tr>
+                    <td width="30%">
+                      <p class="label">Secondary Email:</p>
+
+                    </td>
+                    <td class="ROValue">
+
+                      <span class="cons_text_value" id="cons_value_secondary_email">
+
+                        <%= user.secondaryEmail %>
+                        &nbsp;
+
+                      </span>
+
+
+                    </td>
+                  </tr>
+
+
+
+
+                  <tr>
+                    <td width="30%">
+                      <p class="label">Accept Email:</p>
+
+                    </td>
+                    <td class="ROValue">
+
+
+                      <span class="Explicit">
+
+
+                        <%= user.mailSub? 'Yes': 'No' %>
+
+
+                      </span>
+
+
+                    </td>
+                  </tr>
+
+
+                  <tr>
+                    <td width="30%">
+                      <p class="label">Preferred Format:</p>
+
+                    </td>
+                    <td class="ROValue">
+
+                      <%= user.mailFormat %>
+
+
+
+
+                    </td>
+                  </tr>
+
+
+
+                </tbody>
+              </table>
+            </fieldset>
+
+            <h3>
+              <span="address">Address</span="address">
+            </h3>
+            <div class="line"></div>
+            <fieldset>
+              <table class="grid" cellspacing="0" cellpadding="0">
+
+
+                <tbody>
+                  <tr valign="top">
+                    <td class="heading" colspan="2">
+                      <h4>Address:</h4>
+                    </td>
+                  </tr>
+
+
+
+                  <tr>
+                    <td width="30%">
+
+                      <p class="label">Street 1:</p>
+
+
+                    </td>
+                    <td class="ROValue">
+
+                      <span class="cons_text_value" id="cons_value_home_street1">
+
+                        <%= user.address.street1 %>
+                        &nbsp;
+
+                      </span>
+
+
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+
+
+                  <tr>
+                    <td width="30%">
+
+                      <p class="label">Street 2:</p>
+
+
+                    </td>
+                    <td class="ROValue" width="70%">
+
+                      <span class="cons_text_value" id="cons_value_home_street2">
+                        <%= user.address.street2 %>
+
+                        &nbsp;
+
+                      </span>
+
+
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+
+
+                  <tr>
+                    <td width="30%">
+
+                      <p class="label">Street 3:</p>
+
+
+                    </td>
+                    <td class="ROValue" width="70%">
+
+                      <span class="cons_text_value" id="cons_value_home_street3">
+
+
+                        &nbsp;
+
+                      </span>
+
+
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+
+
+                  <tr>
+                    <td width="30%">
+
+                      <p class="label">City:</p>
+
+
+                    </td>
+                    <td class="ROValue" width="70%">
+
+                      <span class="cons_text_value" id="cons_value_home_city">
+
+                        <%= user.address.city %>
+                        &nbsp;
+
+                      </span>
+
+
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+
+
+                  <tr>
+                    <td width="30%">
+
+                      <p class="label">State/Province:</p>
+
+
+                    </td>
+                    <td class="ROValue" width="70%">
+
+                      <%= user.address.state %>
+
+
+
+
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+
+
+                  <tr>
+                    <td width="30%">
+
+                      <p class="label">County:</p>
+
+
+                    </td>
+                    <td class="ROValue" width="70%">
+
+                      <span class="cons_text_value" id="cons_value_home_county">
+                        <%= user.address.county %>
+
+                        &nbsp;
+
+                      </span>
+
+
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+
+
+                  <tr>
+                    <td width="30%">
+
+                      <p class="label">ZIP/Postal Code:</p>
+
+
+                    </td>
+                    <td class="ROValue" width="70%">
+
+                      <span class="cons_text_value" id="cons_value_home_zip">
+                        <%= user.address.zipCode %>
+
+                        &nbsp;
+
+                      </span>
+
+
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+
+
+
+                  <tr>
+                    <td width="30%">
+
+                      <p class="label">Country:</p>
+
+
+                    </td>
+                    <td class="ROValue" width="70%">
+
+                      <%= user.address.country %>
+
+
+
+
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+
+
+
+
+
+
+
+
+
+                  <tr>
+                    <td class="spacer" colspan="2">&nbsp;</td>
+                  </tr>
+
+
+
+
+
+                  <tr>
+                    <td width="30%">
+                      <p class="label">Accept Mail:</p>
+
+                    </td>
+                    <td class="ROValue">
+
+
+                      <span class="Explicit">
+
+
+
+                        <%= user.postalMail? 'Yes': 'No' %>
+
+
+
+                      </span>
+
+
+                    </td>
+                  </tr>
+
+
+
+
+
+
+
+
+                </tbody>
+              </table>
+            </fieldset>
+
+            <h3>
+              <span="phone_group">Phone</span="phone_group">
+            </h3>
+            <div class="line"></div>
+            <fieldset>
+              <table class="grid" cellspacing="0" cellpadding="0">
+
+
+                <tbody>
+                  <tr>
+                    <td width="30%">
+                      <p class="label">Phone:</p>
+
+                    </td>
+                    <td class="ROValue">
+
+                      <span class="cons_text_value" id="cons_value_home_phone">
+                        <%= user.phone %>
+
+                        &nbsp;
+
+                      </span>
+
+
+                    </td>
+                  </tr>
+
+
+                  <tr>
+                    <td width="30%">
+                      <p class="label">Fax:</p>
+
+                    </td>
+                    <td class="ROValue">
+
+                      <span class="cons_text_value" id="cons_value_home_fax">
+
+                        <%= user.fax %>
+                        &nbsp;
+
+                      </span>
+
+
+                    </td>
+                  </tr>
+
+
+
+
+                  <tr>
+                    <td width="30%">
+                      <p class="label">Work Phone:</p>
+
+                    </td>
+                    <td class="ROValue">
+
+                      <span class="cons_text_value" id="cons_value_work_phone">
+                        <%= user.workPhone %>
+
+                        &nbsp;
+
+                      </span>
+
+
+                    </td>
+                  </tr>
+
+
+                  <tr>
+                    <td width="30%">
+                      <p class="label">Mobile Phone:</p>
+
+                    </td>
+                    <td class="ROValue">
+
+                      <span class="cons_text_value" id="cons_value_mobile_phone">
+                        <%= user.mobilePhone %>
+
+                        &nbsp;
+
+                      </span>
+
+
+                    </td>
+                  </tr>
+
+
+
+                </tbody>
+              </table>
+            </fieldset>
+
+            <h3>
+              <span="transactions">Transaction Information</span="transactions">
+            </h3>
+            <div class="line"></div>
+            <fieldset>
+
+              <table class="grid" cellspacing="0" cellpadding="0">
+
+
+                <tbody>
+                  <tr>
+                    <td class="heading" colspan="4" valign="top">
+                      <h4>Last Transaction:</h4>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td width="30%" nowrap="nowrap">
+                      <p class="label">Date:</p>
+
+                    </td>
+                    <td width="18%">
+
+                      &nbsp;
+
+                      &nbsp;</td>
+                    <td width="22%" nowrap="nowrap">
+                      <p class="label">Amount:</p>
+
+                    </td>
+                    <td>
+                      <span class="cons_text_value" id="cons_value_last_trans_amount">
+
+
+                        &nbsp;
+
+                      </span>
+
+                      &nbsp;
+                    </td>
+                  </tr>
+                  <tr>
+                    <td nowrap="nowrap">
+                      <p class="label">Tender Type:</p>
+
+                    </td>
+                    <td>
+
+
+                      &nbsp;
+
+
+                      &nbsp;</td>
+                    <td nowrap="nowrap">
+                      <p class="label">Payment Method:</p>
+
+                    </td>
+                    <td>
+
+
+                      &nbsp;
+
+
+                      &nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td valign="top" nowrap="nowrap">
+                      <p class="label">Campaign:</p>
+
+                    </td>
+                    <td>
+                      <span class="cons_text_value" id="cons_value_last_trans_campaign">
+
+
+                        &nbsp;
+
+                      </span>
+
+                    </td>
+
+
+                    <td colspan="2">&nbsp;</td>
+
+
+                  </tr>
+
+
+
+
+
+
+
+                </tbody>
+              </table>
+
+            </fieldset>
+            <fieldset>
+
+              <table class="grid" cellspacing="0" cellpadding="0">
+
+
+                <tbody>
+                  <tr>
+                    <td width="30%">
+                      <p class="label">Lifetime Amount:</p>
+
+                    </td>
+                    <td class="ROValue">
+
+                      <span class="cons_text_value" id="cons_value_lifetime_total_trans_amount">
+                        $0.00
+
+
+                      </span>
+
+
+                    </td>
+                  </tr>
+
+
+                  <tr>
+                    <td width="30%">
+                      <p class="label">Lifetime Transaction Count:</p>
+
+                    </td>
+                    <td class="ROValue">
+
+                      <span class="cons_text_value" id="cons_value_lifetime_total_trans_count">
+                        0
+
+
+                      </span>
+
+
+                    </td>
+                  </tr>
+
+
+
+                </tbody>
+              </table>
+
+            </fieldset>
+
+
+
+            <p>
+
+
+              <input type="submit" name="op.cnclViewCons" id="op.cnclViewCons" value="Done" title="Done" class="Button">
+            </p>
+            <input type="hidden" name="dispMode" id="dispMode" value="view">
+
+
+            <input type="hidden" name="panesOpen" id="panesOpen" value="ffffffffffffffff">
+
+            <div style="display:none">
+              <label for="denySubmit">Spam Control Text:</label>&nbsp;
+              <input type="text" name="denySubmit" id="denySubmit" value=""
+                alt="This field is used to prevent form submission by scripts.">&nbsp;Please leave this field empty
+            </div>
+
+
+
+
+            <p class="spacer">&nbsp;</p>
+          </fieldset>
+        </form>
+      </div>
+
+
+      <div class="yui-panel-container yui-overlay-hidden" id="lightbox-for-long-load_c"
+        style="visibility: hidden; left: 677px; top: 308px; z-index: 2;">
+        <div id="lightbox-for-long-load" class="yui-panel-container yui-module yui-overlay yui-panel"
+          style="visibility: inherit; width: 420px;">
+          <div class="hd" style="cursor: auto;"> Loading...</div>
+          <div class="bd">
+            <p>
+              <img alt="Please wait." src="../images/ajax_loaders/dots.gif">
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Please wait while we process your request
+            </p>
+          </div>
+        </div>
+      </div>
+      <script type="text/javascript">
+        preEnhance('lightbox-for-long-load');
+        Y.use('jquery-ui', 'boxinator', 'yui2-element', 'yui2-button', function (Y) {
+          jQuery(document).ready(function () {
+            var lightbox_long_load = new Y.Convio.widget.Boxinator('#lightbox-for-long-load', Y.Convio.widget.Boxinator.USER_LightBox);
+            var long_load_link = jQuery('a[id^="remove_cons_link"]');
+            var lightbox_long_load_show = new YAHOO.util.Element(long_load_link);
+            lightbox_long_load_show.subscribe('click', lightbox_long_load.onEventShowWithDelay, null, lightbox_long_load);
+            postEnhance('lightbox-for-long-load');
+          });
+        });
+      </script><noscript>&nbsp;</noscript>
+
+
+    </div>
+    <div id="outro_html" class="appArea">
+
+    </div>
+  </div>
+
+  <%- include ("partials/footer") %>

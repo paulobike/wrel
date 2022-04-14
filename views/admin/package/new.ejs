@@ -1,0 +1,94 @@
+<%- include('../partials/header") %>
+
+<!-- Header -->
+    <div class="header bg-default pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-lg-6 col-7">
+              <h6 class="h2 text-white d-inline-block mb-0">New investment</h6>
+              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                  <li class="breadcrumb-item"><a href="#"><i class="fas fa-home text-default"></i></a></li>
+                  <li class="breadcrumb-item active" aria-current="page">New investment</li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid mt--6">
+      <div class="row justify-content-center">
+        <div class=" col-lg-9 ">
+          <div class="card">
+            <div class="card-body">
+                <form method="POST" action="/admin/packages">
+                    <h6 class="heading-small text-muted mb-4">Investment details</h6>
+                    <div class="pl-lg-4">
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <div class="form-group">
+                            <label class="form-control-label" for="investment">Investment Amount</label>
+                            <input type="number" id="investment" class="form-control" value="50" min="50" name="amount" max="<%= packageArr[packageArr.length - 1].maxPrice %>" required>
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="form-group">
+                            <label class="form-control-label" for="package">Package type:</label>
+                            <input type="text" id="package" class="form-control" value="basic" list="packages" disabled="" name="package">
+                            <datalist id="packages">
+                              <% packageArr.forEach(package => { %>
+                                <option value="<%= package.priceName %>" id="<%= package.priceName.replace(/ /g, '_') %>"></option>
+                              <% }) %>
+                            </datalist>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                              <label class="form-control-label" for="start-date">Start date</label>
+                              <input type="date" id="start-date" class="form-control" placeholder="Start date" name="date">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="form-group">
+                            <label class="form-control-label" for="start-date">Start time</label>
+                            <input type="time" id="start-time" class="form-control" placeholder="Start time" name="time">
+                          </div>
+                      </div>
+                      </div>
+                      <input type="text" hidden readonly name="user[id]" value="<%= duser._id %>">
+                      <input type="text" hidden readonly name="user[username]" value="<%= duser.username %>">
+                      <input type="text" value="<%= JSON.stringify(packageArr) %>" hidden readonly id="packagesInput">
+                    <button type="submit" class="btn btn-default mt-2">Submit</button>
+                    </div>
+                  </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var packagesStr = document.querySelector('input#packagesInput').value;
+      var packages = JSON.parse(packagesStr);
+      var investment = document.querySelector('input#investment');
+      var package = document.querySelector('input#package');
+      investment.addEventListener('keyup', (e) => updatePage(e));
+      investment.addEventListener('click', (e) => updatePage(e));
+      updatePage({target: investment});
+      function updatePage(e) {
+        let amount = Number(e.target.value);
+        package.value = 'INVALID PACKAGE';
+        packages.forEach(pack => {
+          if(Number(amount) >= Number(pack.minPrice) && amount < Number(pack.maxPrice)) {
+            package.value = (pack.priceName);
+          }
+        });
+      }
+    </script>
+        <!-- Footer -->
+
+<%- include('../partials/footer") %>

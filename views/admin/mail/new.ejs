@@ -1,0 +1,161 @@
+<%- include('../partials/header') %>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/assets/css/froala_editor.css">
+  <link rel="stylesheet" href="/assets/css/froala_style.css">
+  <link rel="stylesheet" href="/assets/css/plugins/code_view.css">
+  <link rel="stylesheet" href="/assets/css/plugins/draggable.css">
+  <link rel="stylesheet" href="/assets/css/plugins/colors.css">
+  <link rel="stylesheet" href="/assets/css/plugins/emoticons.css">
+  <link rel="stylesheet" href="/assets/css/plugins/image_manager.css">
+  <link rel="stylesheet" href="/assets/css/plugins/image.css">
+  <link rel="stylesheet" href="/assets/css/plugins/line_breaker.css">
+  <link rel="stylesheet" href="/assets/css/plugins/table.css">
+  <link rel="stylesheet" href="/assets/css/plugins/char_counter.css">
+  <link rel="stylesheet" href="/assets/css/plugins/video.css">
+  <link rel="stylesheet" href="/assets/css/plugins/fullscreen.css">
+  <link rel="stylesheet" href="/assets/css/plugins/file.css">
+  <link rel="stylesheet" href="/assets/css/plugins/quick_insert.css">
+  <link rel="stylesheet" href="/assets/css/plugins/help.css">
+  <link rel="stylesheet" href="/assets/css/third_party/spell_checker.css">
+  <link rel="stylesheet" href="/assets/css/plugins/special_characters.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
+
+  <style>
+    div#editor {
+      margin: auto;
+      text-align: left;
+    }
+
+    .ss {
+      background-color: red;
+    }
+  </style>
+
+<!-- Header -->
+    <div class="header bg-default pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-lg-6 col-7">
+              <h6 class="h2 text-white d-inline-block mb-0">New mail</h6>
+              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                  <li class="breadcrumb-item"><a href="#"><i class="fas fa-home text-default"></i></a></li>
+                  <li class="breadcrumb-item active" aria-current="page">New mail</li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid mt--6">
+      <div class="row justify-content-center">
+        <div class=" col-lg-9 ">
+          <div class="card">
+            <div class="card-body">
+                <form method="POST" action="/admin/mail">
+                    <h6 class="heading-small text-muted mb-4">Build</h6>
+                    <div class="pl-lg-4">
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <div class="form-group">
+                            <label class="form-control-label" for="sender ">Sender</label>
+                            <input type="text" class="form-control border-input"  id="sender" name="sender">
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="form-group">
+                            <label class="form-control-label" for="subject">Subject</label>
+                            <input type="text" class="form-control border-input" id="subject" name="subject">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <div class="form-group">
+                            <label class="form-control-label" for="group">Send to</label>
+                            <select id="group" class="form-control" name="group" required>
+                                <option value="donors">Donors</option>
+                                <option value="nondonors">Non-donors</option>
+                                <option value="all">All</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div class="form-group">
+                              <label class="form-control-label" for="body">Body</label>
+                              <div id="body">
+                                <div id='edit' style="margin-top: 30px;">
+                                  
+                                </div>
+                              </div> 
+                          </div>                           
+                        </div>
+                        <textarea name="body" id="body_text" hidden required></textarea> 
+                      </div>
+                    <button type="submit" class="btn btn-default mt-2">Submit</button>
+                    </div>
+                  </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+        <!-- Footer -->
+        <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.js"></script>
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/xml/xml.min.js"></script>
+
+  <script type="text/javascript" src="/assets/js/froala_editor.min.js"></script>
+  <script type="text/javascript" src="/assets/js/plugins/align.min.js"></script>
+  <script type="text/javascript" src="/assets/js/plugins/char_counter.min.js"></script>
+  <script type="text/javascript" src="/assets/js/plugins/code_beautifier.min.js"></script>
+  <script type="text/javascript" src="/assets/js/plugins/code_view.min.js"></script>
+  <script type="text/javascript" src="/assets/js/plugins/colors.min.js"></script>
+  <script type="text/javascript" src="/assets/js/plugins/draggable.min.js"></script>
+  <script type="text/javascript" src="/assets/js/plugins/emoticons.min.js"></script>
+  <script type="text/javascript" src="/assets/js/plugins/entities.min.js"></script>
+  <script type="text/javascript" src="/assets/js/plugins/file.min.js"></script>
+  <script type="text/javascript" src="/assets/js/plugins/font_size.min.js"></script>
+  <script type="text/javascript" src="/assets/js/plugins/font_family.min.js"></script>
+  <script type="text/javascript" src="/assets/js/plugins/fullscreen.min.js"></script>
+  <script type="text/javascript" src="/assets/js/plugins/image.min.js"></script>
+  <script type="text/javascript" src="/assets/js/plugins/image_manager.min.js"></script>
+  <script type="text/javascript" src="/assets/js/plugins/line_breaker.min.js"></script>
+  <script type="text/javascript" src="/assets/js/plugins/inline_style.min.js"></script>
+  <script type="text/javascript" src="/assets/js/plugins/link.min.js"></script>
+  <script type="text/javascript" src="/assets/js/plugins/lists.min.js"></script>
+  <script type="text/javascript" src="/assets/js/plugins/paragraph_format.min.js"></script>
+  <script type="text/javascript" src="/assets/js/plugins/paragraph_style.min.js"></script>
+  <script type="text/javascript" src="/assets/js/plugins/quick_insert.min.js"></script>
+  <script type="text/javascript" src="/assets/js/plugins/quote.min.js"></script>
+  <script type="text/javascript" src="/assets/js/plugins/table.min.js"></script>
+  <script type="text/javascript" src="/assets/js/plugins/save.min.js"></script>
+  <script type="text/javascript" src="/assets/js/plugins/url.min.js"></script>
+  <script type="text/javascript" src="/assets/js/plugins/video.min.js"></script>
+  <script type="text/javascript" src="/assets/js/plugins/help.min.js"></script>
+  <script type="text/javascript" src="/assets/js/plugins/print.min.js"></script>
+  <script type="text/javascript" src="/assets/js/third_party/spell_checker.min.js"></script>
+  <script type="text/javascript" src="/assets/js/plugins/special_characters.min.js"></script>
+  <script type="text/javascript" src="/assets/js/plugins/word_paste.min.js"></script>
+
+  <script>
+    (function () {
+      new FroalaEditor("#edit")
+    })()
+    var target = document.querySelector('#edit .fr-element')
+    // create an observer instance
+    var observer = new MutationObserver(function(mutations) {
+      console.log(document.querySelector('#edit .fr-element').innerHTML);   
+    });
+    // configuration of the observer:
+    var config = { attributes: true, childList: true, characterData: true };
+    // pass in the target node, as well as the observer options
+    observer.observe(target, config);
+  </script>
+
+<%- include('../partials/footer') %>

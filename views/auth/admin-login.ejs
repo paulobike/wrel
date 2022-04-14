@@ -1,0 +1,137 @@
+<%- include('partials/header') %>
+            <!-- Blackbaud Content Here -->
+            <div id="s63">
+
+
+
+
+
+
+
+
+                <span>&nbsp; </span> <br>
+                <div id="appAreaNoWidthClearFix">
+                    <div id="login-div-content">
+                        <div class="outer-border">
+                            <div class="header-block">
+                                <div class="banner-header"><strong>Admin Login</strong></div>
+                            </div>
+                        </div>
+                        <div class="outer-border">
+                            <span>&nbsp; </span> <br>
+                            <table width="80%" cellspacing="0" cellpadding="2" border="0">
+                                <tbody>
+                                    <tr valign="top">
+                                        <td width="1%">
+                                            &nbsp;
+                                        </td>
+                                        <td width="70%">
+
+                                            <form action="/admin/login" method="post"
+                                                name="lmainLogonForm" id="lmainLogonForm">
+                                                <div class="login-form">
+                                                    <div class="input-border">
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td colspan="3">
+                                                                        <span><strong>Welcome admin<strong></strong></strong></span><strong><strong>
+                                                                            </strong></strong>
+                                                                    </td>
+                                                                </tr>
+                                                                <% if(error && error.length > 0) { %>
+                                                                    <tr>
+                                                                        <td colspan="3">
+                                                                        <span class="ErrorMessage"><%= error %></span>
+                                                                        </td>
+                                                                    </tr>
+                                                                <% } %>
+                                                                <% if(success && success.length > 0) { %>
+                                                                    <tr>
+                                                                        <td colspan="3">
+                                                                        <span class="SuccessMessage"><%= success %></span>
+                                                                        </td>
+                                                                    </tr>
+                                                                <% } %>
+                                                                
+                                                                <tr>
+                                                                    <td colspan="3">
+                                                                        <span class="Hint">* = Required Fields</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width="3%">
+                                                                        <p>*</p>
+                                                                    </td>
+                                                                    <td width="20%" nowrap="nowrap">
+                                                                        <span><label
+                                                                                for="USERNAME">Username:</label></span>
+                                                                    </td>
+                                                                    <td width="73%">
+                                                                        <input type="text" name="username" id="USERNAME"
+                                                                            size="18" maxlength="60">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width="3%">
+                                                                        <span>*</span>
+                                                                    </td>
+                                                                    <td width="20%">
+                                                                        <span><label
+                                                                                for="Password">Password:</label></span>
+                                                                    </td>
+                                                                    <td width="73%">
+                                                                        <input type="password" autocomplete="off"
+                                                                            name="password" id="Password" size="18"
+                                                                            maxlength="99">
+                                                                    </td>
+                                                                </tr>
+
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <input type="hidden" name="NEXTURL" id="NEXTURL"
+                                                        value="/account/register">
+
+                                                    <div class="actions">
+                                                        <input name="login" id="login" type="submit" value="Submit"
+                                                            class="uc-button">
+                                                    </div>
+
+                                                </div>
+                                            </form>
+
+                                        </td>
+                                    </tr>
+                                    <tr valign="top">
+                                        <td width="1%">
+                                            <p> </p>
+                                        </td>
+                                        <td colspan="2">
+
+
+                                            <span><strong> </strong></span> <br>
+                                            <span></span>
+
+
+                                            <br>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="footer-block"> &nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+                <script language="JavaScript" type="text/javascript">
+
+                        document.lmainLogonForm.USERNAME.focus();
+
+                </script>
+                <noscript>Tab to the user name input.</noscript>
+
+            </div>
+        </div>
+        <!-- End Page Content -->
+<%- include('partials/footer') %>

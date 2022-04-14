@@ -1,0 +1,100 @@
+<%- include ("partials/header") %>
+
+
+    <!-- Header -->
+    <!-- Header -->
+    <div class="header bg-default  pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-12">
+              <h6 class="h2 text-white d-inline-block mb-0">Deposits</h6>
+              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                  <li class="breadcrumb-item"><a href="/"><i class="fas fa-home text-default"></i></a></li>
+                  <li class="breadcrumb-item active">Deposits</li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-text">
+                    History of all deposits made to your account
+                </div>
+                <div class="row mt-4">
+                    <div class="card w-100 mx-4">
+                        <div class="card-header border-0">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                <h3 class="mb-0">Deposits</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                        <!-- Projects table -->
+                            <table class="table align-items-center table-flush">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>Amount</th>
+                                        <th>Currency</th>
+                                        <th>Transaction ID</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% if(transactions.length) { %>
+                                        <% transactions.forEach(e => { %>
+                                            <tr>
+                                                <td class="text-capitalize">
+                                                    <%= e.amount %>
+                                                </td>
+                                                <td class="text-capitalize">
+                                                    <%= e.cryptoType %>
+                                                </td>
+                                                <td class="text-capitalize">
+                                                    <%= e.code %>
+                                                </td>
+                                                <td class="text-capitalize">
+                                                    <%= ((new Date(e.date)).toLocaleDateString()) %>
+                                                </td>
+                                                <td class="text-capitalize">
+                                                    <%= e.status %>
+                                                    <% if(e.status === 'pending') { %>
+                                                        <i class="fas fa-clock text-warning"></i>
+                                                    <% } %>
+                                                    <% if(e.status === 'approved') { %>
+                                                        <i class="fa fa-check text-success"></i>
+                                                    <% } %>
+                                                    <% if(e.status === 'rejected') { %>
+                                                        <i class="far fa-times-circle text-danger"></i>
+                                                    <% } %>
+                                                </td>
+                                            </tr>
+                                        <% }); %>
+                                    <% } else { %>
+                                        <tr>
+                                            <th colspan="4" class="lead text-center" style="font-size: 1.25rem; font-weight: 300;">
+                                              No deposits yet! <a href="/dashboard/deposit">Make a deposit</a>
+                                            </th>
+                                        </tr>
+                                    <% } %>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+      <!-- Footer -->
+      
+<%- include ("partials/footer") %>
+  

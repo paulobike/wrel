@@ -1,0 +1,55 @@
+<%- include ("partials/header") %>
+
+
+<!-- Header -->
+<!-- Header -->
+<div class="header bg-default  pb-6">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-12">
+          <h6 class="h2 text-white d-inline-block mb-0">Select a plan</h6>
+          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+              <li class="breadcrumb-item"><a href="/"><i class="fas fa-home text-default"></i></a></li>
+              <li class="breadcrumb-item active">Invest</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--6"> 
+    <% Object.keys(groupedPackages).forEach(group => { %>
+        <div class="card">
+            <div class="card-body">
+                <h6 class="heading-small text-muted mb-4 text-uppercase"><%= group %> packages</h6>
+                <div class="row">
+                    <% groupedPackages[group].forEach((package, i) => { %>
+                        <div class="col-sm-6 mb-2">
+                            <div class="border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
+                                <div class="d-flex flex-column">
+                                    <h6 class="mb-3 text-sm"><%= package.priceName %></h6>
+                                    <span class="mb-2 text-xs">Min. Price: <span class="text-pry font-weight-bold ms-sm-2"><%= config.currency_unit %><%= package.minPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %></span></span>
+                                    <span class="mb-2 text-xs">Max. Price: <span class="text-pry ms-sm-2 font-weight-bold"><%= config.currency_unit %><%= (package.maxPrice - 1).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %></span></span>
+                                    <span class="mb-2 text-xs">Duration: <span class="text-pry ms-sm-2 font-weight-bold text-capitalize"><%= package.displayedDuration %></span></span>
+                                    <span class="text-xs">Return: <span class="text-pry ms-sm-2 font-weight-bold"><%= package.roi %>%</span></span>
+                                </div>
+                                <div class="ms-auto text-end" style="display: flex;justify-content: center;align-items: center;">
+                                    
+                                    <a href="/dashboard/invest?package=<%= package.priceName %>" class="btn btn-primary"><i aria-hidden="true"></i>Invest</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+    <% }) %>
+    
+</div>
+
+<%- include ("partials/footer") %>    

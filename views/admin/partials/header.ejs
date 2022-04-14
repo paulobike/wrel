@@ -1,0 +1,217 @@
+  <!--
+=========================================================
+* Argon Dashboard - v1.2.0
+=========================================================
+* Product Page: https://www.creative-tim.com/product/argon-dashboard
+
+
+* Copyright  Creative Tim (http://www.creative-tim.com)
+* Coded by www.creative-tim.com
+
+
+
+=========================================================
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Best investment site with stable returns.">
+  <meta name="author" content="Creative Tim">
+  <title><%= page %> - <%= config.name %></title>
+  <!-- Favicon -->
+  <link rel="icon" href="<%= config.faviconURL %>" type="image/png">
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+  <!-- Icons -->
+  <link rel="stylesheet" href="/assets/vendor/nucleo/css/nucleo.css" type="text/css">
+  <link rel="stylesheet" href="/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+  <!-- Page plugins -->
+  <!-- Argon CSS -->
+  <style>
+    :root
+    {
+      --primary: <%= config.dashboardColors.primary %>;
+      --default: <%= config.dashboardColors.default %>;
+      --avatar-bg: <%= config.dashboardColors.avatarBg %>;
+      --avatar-txt-color: <%= config.dashboardColors.avatarTxtColor %>;
+    }
+  </style>
+  <link rel="stylesheet" href="/assets/css/argon.css?v=1.2.0" type="text/css">
+</head>
+
+<body>
+ <!-- Whatsapp -->
+ <input type="hidden" value="<%= config.whatsappNumber || '' %>" id="whatsappNumber">
+<script type="text/javascript">
+  (function () {
+      let whatsappNumber = document.getElementById('whatsappNumber').value;
+      if(whatsappNumber && whatsappNumber.length > 0) {
+        var options = {
+          whatsapp: whatsappNumber, // WhatsApp number
+          call_to_action: "Message us", // Call to action
+          position: "left", // Position may be 'right' or 'left'
+        };
+        var proto = document.location.protocol, host = "getbutton.io", url = proto + "//static." + host;
+        var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+        s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+        var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+      }
+      
+  })();
+</script>
+
+<!-- Live Chat script -->
+<%- config.liveChatScript %>
+
+
+  <!-- Sidenav -->
+  <nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-dark bg-default" id="sidenav-main">
+    <div class="scrollbar-inner">
+      <!-- Brand -->
+      <div class="sidenav-header  align-items-center">
+        <a class="navbar-brand text-primary float-left" style="font-size: .9rem;" href="/">
+          <img src="<%= config.logoURL %>" alt="logo" style="margin-right: 0px; max-height: unset; width: 150px; max-width: unset;">
+          <!-- <span><span style="font-weight: bolder;">Trade Invest -->
+        </a>
+      </div>
+      <div class="navbar-inner">
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+          <!-- Nav items -->
+         
+          <!-- Heading -->
+          <% if(user.isAdmin) { %>
+            <h6 class="navbar-heading p-0 text-muted">
+              <span class="docs-normal">Admin links</span>
+            </h6>
+            <!-- Navigation -->
+            <ul class="navbar-nav mb-md-3">
+              <li class="nav-item">
+                <a class="nav-link <%= page === 'admin_users'? 'active': '' %>" href="/admin/users">
+                  <i class="ni ni-lock-circle-open"></i>
+                  <span class="nav-link-text">Users</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link <%= page === 'admin_deposits'? 'active': '' %>" href="/admin/transactions">
+                  <i class="ni ni-lock-circle-open"></i>
+                  <span class="nav-link-text">Donation transactions</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link <%= page === 'admin_mail' || page === 'admin_new_mail'? 'active': '' %>" href="/admin/mail">
+                  <i class="ni ni-lock-circle-open"></i>
+                  <span class="nav-link-text">Bulk mail</span>
+                </a>
+              </li>
+          <% } else { %>
+            <h6 class="navbar-heading p-0 text-muted">
+              <span class="docs-normal">Other Links</span>
+            </h6>
+            <!-- Navigation -->
+            <ul class="navbar-nav mb-md-3">
+              <li class="nav-item">
+                <a class="nav-link" href="/">
+                  <i class="fa fa-home"></i>
+                  <span class="nav-link-text">Home</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="<%= config.aboutURL %>">
+                  <i class="fa fa-info"></i>
+                  <span class="nav-link-text">About</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="<%= config.contactURL %>">
+                  <i class="fa fa-id-card"></i>
+                  <span class="nav-link-text">Contact</span>
+                </a>
+              </li>
+          <% } %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- Main content -->
+  <div class="main-content" id="panel">
+    <!-- Topnav -->
+    <nav class="navbar navbar-top navbar-expand <%= navTheme.color %> bg-<%= navTheme.bg %> border-bottom">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
+          <!-- Navbar links -->
+          <div class="d-flex align-items-center">
+            <div class="nav-item d-xl-none ml-2">
+              <!-- Sidenav toggler -->
+              <div class="pr-3 sidenav-toggler sidenav-toggler-dark" data-action="sidenav-pin" data-target="#sidenav-main">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                </div>
+              </div>
+            </div>
+            <div class="navbar-text p-0  mr-3">
+              <div id="flash">
+                <% if(success && success.length > 0){ %>
+                  <div class="alert alert-success m-0 text-success" role="alert" style="background-color: unset;">
+                    <%= success %>
+                  </div>  
+                <% } %>
+      
+                <% if(error && error.length > 0){ %>
+                  <div class="alert alert-danger m-0 text-danger" role="alert" style="background-color: unset;">
+                    <%= error %>
+                  </div>
+                <% } %>
+              </div>
+            </div>     
+          </div>
+            <!-- <div class="alert alert-success py-2 m-0">Successful add a long text here just for testing purpose!</div> -->
+          <ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
+            <li class="nav-item dropdown">
+              <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="media align-items-center">
+                  <span class="avatar avatar-sm rounded-circle">
+                    <%= user.firstname.slice(0, 1).toUpperCase() %>
+                  </span>
+                  <div class="media-body  ml-2  d-none d-lg-block">
+                    <span class="mb-0 text-sm  font-weight-bold text-white"><%= user.firstname + ' ' + user.lastname %></span>
+                  </div>
+                </div>
+              </a>
+              <div class="dropdown-menu  dropdown-menu-right ">
+                <% if(!user.isAdmin) { %>
+                  <div class="dropdown-header noti-title">
+                    <h6 class="text-overflow m-0">Welcome!</h6>
+                  </div>
+                  <a href="/dashboard/profile" class="dropdown-item">
+                    <i class="ni ni-single-02"></i>
+                    <span>My profile</span>
+                  </a>
+                  <a href="/dashboard" class="dropdown-item">
+                    <i class="ni ni-settings-gear-65"></i>
+                    <span>Dashboard</span>
+                  </a>
+                  
+                <% } %>
+                <a href="/dashboard/change-password" class="dropdown-item">
+                  <i class="ni ni-lock-circle-open"></i>
+                  <span>Change password</span>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="/account/logout" class="dropdown-item">
+                  <i class="ni ni-user-run"></i>
+                  <span>Logout</span>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
