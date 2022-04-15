@@ -23,9 +23,11 @@ module.exports.getDeposits = async (req, res, userId) => {
     if(userId) {
         query['user.id'] = userId;
     }
+    let duser;
 
     try {
         count = await Transaction.countDocuments(query);
+        if(userId) duser = await User.findById(userId);
     } catch (err) {
         count = 0;
     }
@@ -38,6 +40,7 @@ module.exports.getDeposits = async (req, res, userId) => {
             page: pending? 'admin_pending_deposits' : 'admin_deposits',
             showUser: !Boolean(userId),
             offset,
+            duser,
             end,
             count,
             pending,

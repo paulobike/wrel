@@ -24,6 +24,9 @@ var transactionSchema = new mongoose.Schema({
         accountName: String,
         accountType: String,
     },
+    crypto: {
+        currency: String
+    },
     status: {type: String},
     user: {
         id: {

@@ -8,6 +8,7 @@ User                  = require("./models/user"),
 adminRoutes           = require("./routes/admin"),
 dashboardRoutes       = require("./routes/dashboard"),
 indexRoutes           = require("./routes/index"),
+depositRoutes           = require("./routes/deposit"),
 flash                 = require("connect-flash"),
 methodOverride        = require("method-override"),
 middleware            = require("./middleware"),
@@ -43,7 +44,9 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static("public"));
+app.use(express.static('node_modules/qrcode'));
 app.use(express.urlencoded({extended: true}));
+app.use(express.json());
 app.use(flash());
 app.use((req, res, next) => {
     res.locals.user = req.user;
@@ -67,6 +70,8 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use(middleware.secure);
+app.get('/', (req, res) => res.render('externalSession'));
+app.use('/deposit', depositRoutes);
 app.use('/account', indexRoutes);
 app.use("/dashboard", middleware.isLoggedIn, middleware.toAdmin, dashboardRoutes);
 app.use("/admin", adminRoutes);

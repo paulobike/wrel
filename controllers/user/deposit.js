@@ -12,7 +12,7 @@ module.exports.getDepositPage = async (req, res, type) => {
     if(!res.locals.user) {
         res.locals.user = {firstname: '', lastname: '', username: '', _id: '', address: {}}
     }
-    res.render('dashboard/' + (type == 'monthly'? 'deposit-monthly': 'deposit'), {
+    res.render('dashboard/' + (type == 'monthly'? 'deposit-monthly': (type == 'crypto'? 'deposit-crypto': 'deposit')), {
         navTheme: {color:'navbar-dark', bg: 'default'},
         page: 'deposit',
         countries: countries
@@ -107,10 +107,29 @@ module.exports.getGiftsPage = async (req, res) => {
 //     }
 // }
 
-module.exports.depositManually = async (req, res) => {
+module.exports.depositManually = async (req, res, type) => {
     let transactionObj = { ...req.body };
     if(transactionObj.payment_typepay_typeradio == 'credit') transactionObj.paymentType = 'card'
     if(transactionObj.payment_typepay_typeradio == 'ach') transactionObj.paymentType = 'bank'
+    if(type) {
+        transactionObj.paymentType = type;
+        if(type == 'crypto') {
+            transactionObj.address = {
+                street1: transactionObj['Address 1'],
+                street2: transactionObj['Address 2'],
+                city: transactionObj['City'],
+                State: transactionObj['State'],
+                country: transactionObj['Country'],
+                zipCode: transactionObj['Zipcode']
+            };
+            transactionObj.firstname = transactionObj['First name'];
+            transactionObj.lastname = transactionObj['Last name'];
+            transactionObj.email = transactionObj['Email'];
+            transactionObj.phone = transactionObj['City'];
+            transactionObj.amount = transactionObj['pledgeAmount'];
+            transactionObj.crypto = {currency: transactionObj['pledgeCurrency']}
+        }
+    }
     if(req.user) {
         transactionObj.user = {
             id: req.user._id,

@@ -1,4 +1,5 @@
 module.exports = {
+    name: 'World relief',
     PORT: 6789,
     IP: '127.0.0.1',
     MONGO_CONNECTION_STRING: 'mongodb://localhost:27017/relief',

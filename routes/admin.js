@@ -12,6 +12,8 @@ const { fetchUser, fetchUsers, updateUser, deleteUser, getUserChangePasswordPage
 const { getDeposits, updateDeposit, deleteDeposit, fetchDeposit } = require("../controllers/admin/deposits");
 const { fetchMails, getSendMailPage, fetchMail, sendNewMail, deleteMail } 
     = require("../controllers/admin/mail");
+const { fetchWallets, getCreateWalletPage, fetchWallet, createWallet, deleteWallet }
+    = require("../controllers/admin/wallets");
 
 
 /**
@@ -50,7 +52,7 @@ router.delete("/users/:id", middleware.isAdmin, (req, res) => {
 });
 
 router.get("/users/:id/transactions", middleware.isAdmin, (req, res) => {
-    getDeposits(req, res, req,params.id);
+    getDeposits(req, res, req.params.id);
 });
 
 router.get('/users/:id/change_password', (req, res) => {
@@ -80,6 +82,30 @@ router.get('/transactions/:id', (req, res) => {
 
 router.delete('/transactions/:id', (req, res) => {
     deleteDeposit(req, res);
+});
+
+
+/**
+ * WALLETS
+ */
+ router.get('/wallet', middleware.isAdmin, (req, res) => {
+    fetchWallets(req, res);
+});
+
+router.get('/wallet/new', middleware.isAdmin, (req, res) => {
+    getCreateWalletPage(req, res);
+});
+
+router.get('/wallet/:id', middleware.isAdmin, (req, res) => {
+    fetchWallet(req, res);
+});
+
+router.post('/wallet', middleware.isAdmin, (req, res) => {
+    createWallet(req, res);
+});
+
+router.delete('/wallet/:id', middleware.isAdmin, (req, res) => {
+    deleteWallet(req, res);
 });
 
 

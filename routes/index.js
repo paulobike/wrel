@@ -7,7 +7,6 @@ User          = require("../models/user"),
 passport      = require("passport"),
 middleware    = require("../middleware"),
 jwt           = require('jsonwebtoken');
-const { getDepositPage, depositManually } = require("../controllers/user/deposit");
 
 router.get("/register", async (req, res) => {
     res.render("auth/register", { page: 'Register', countries: countries });
@@ -232,17 +231,5 @@ router.get("/logout", (req, res) => {
     res.redirect("/");
 });
 
-
-router.get('/donate', (req, res) => {
-    getDepositPage(req, res);
-});
-
-router.get('/donate-monthly', (req, res) => {
-    getDepositPage(req, res, 'monthly');
-});
-
-router.post('/donate', (req, res) => {
-    depositManually(req, res);
-});
 
 module.exports = router;
