@@ -518,8 +518,8 @@
   <link rel="manifest" href="https://tgbwidget.com/manifest.json">
   <title>The Giving Block</title>
   <script defer="defer" src="a_data_003/main.js"></script>
-  <link rel="stylesheet" href="a_data_003/css.css" media="all">
-  <link href="a_data_003/main.css" rel="stylesheet">
+  <link rel="stylesheet" href="/Donate Cryptocurrency - World Relief_files/a_data_003/css.css" media="all">
+  <link href="/Donate Cryptocurrency - World Relief_files/a_data_003/main.css" rel="stylesheet">
   <style data-jss="" data-meta="Unthemed">
     .container-0-2-1 {
       padding: 6px;
@@ -3268,83 +3268,32 @@
             <div class="stage-0-2-16 null">2. INFO</div>
             <div class="stage-0-2-16 null">3. DONATE</div>
           </div>
+          <form action="/deposit/donate-crypto" method="post">
           <div class="MuiContainer-root contentContainer-0-2-30 contentContainerPadded-0-2-29 MuiContainer-maxWidthLg">
             <div class="inputButtonsWrapper-0-2-42">
               <h6 class="cryptoHeader-0-2-32">Select Your Crypto</h6>
               <div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1">
-                <div
-                  class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 MuiGrid-grid-sm-6 MuiGrid-grid-md-6 MuiGrid-grid-lg-6">
-                  <button
-                    class="MuiButtonBase-root MuiButton-root MuiButton-outlined item-0-2-43 itemIsSelected-0-2-45 MuiButton-outlinedSizeSmall MuiButton-sizeSmall MuiButton-fullWidth"
-                    tabindex="0" type="button"
-                    style="border-color: rgb(252, 212, 43); background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);"><span
-                      class="MuiButton-label itemLabel-0-2-44"><img
-                        src="a_data_003/currency_images852456e2-8d49-4306-b4f1-485c098b09f9.png" alt="btc"
-                        class="icon-0-2-46"><span>Bitcoin</span></span><span
-                      class="MuiTouchRipple-root"></span></button></div>
-                <div
-                  class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 MuiGrid-grid-sm-6 MuiGrid-grid-md-6 MuiGrid-grid-lg-6">
-                  <button
-                    class="MuiButtonBase-root MuiButton-root MuiButton-outlined item-0-2-43  MuiButton-outlinedSizeSmall MuiButton-sizeSmall MuiButton-fullWidth"
-                    tabindex="0" type="button"><span class="MuiButton-label itemLabel-0-2-44"><img
-                        src="a_data_003/currency_images8e59ed38-9060-470c-a62b-a53b99d5d1e4.png" alt="eth"
-                        class="icon-0-2-46"><span>Ethereum</span></span><span
-                      class="MuiTouchRipple-root"></span></button></div>
-              </div>
+                
               <div class="MuiFormControl-root optionWrapper-0-2-55 MuiFormControl-fullWidth">
                 <div class="MuiAutocomplete-root MuiAutocomplete-hasClearIcon MuiAutocomplete-hasPopupIcon"
-                  role="combobox" aria-expanded="false">
-                  <div class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"><label
-                      class="MuiFormLabel-root MuiInputLabel-root labelRoot-0-2-58 MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-marginDense MuiInputLabel-outlined"
-                      data-shrink="false" id="mui-95993-label" for="mui-95993">Other crypto options</label>
-                    <div
-                      class="MuiInputBase-root MuiOutlinedInput-root MuiAutocomplete-inputRoot inputRoot-0-2-57 inputRoot-d0-0-2-62 MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd MuiInputBase-marginDense MuiOutlinedInput-marginDense">
-                      <input aria-invalid="false" autocomplete="off" placeholder="Search currencies" type="text"
-                        class="MuiInputBase-input MuiOutlinedInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
-                        aria-autocomplete="list" autocapitalize="none" spellcheck="false" id="mui-95993">
-                      <div class="MuiAutocomplete-endAdornment"><button
-                          class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-clearIndicator MuiAutocomplete-clearIndicatorDirty"
-                          tabindex="-1" type="button" aria-label="Clear" title="Clear"><span
-                            class="MuiIconButton-label"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
-                              focusable="false" viewBox="0 0 24 24" aria-hidden="true">
-                              <path
-                                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
-                              </path>
-                            </svg></span><span class="MuiTouchRipple-root"></span></button><button
-                          class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-popupIndicator" tabindex="-1"
-                          type="button" aria-label="Open" title="Open"><span class="MuiIconButton-label"><svg
-                              class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
-                              <path d="M7 10l5 5 5-5z"></path>
-                            </svg></span><span class="MuiTouchRipple-root"></span></button></div>
-                      <fieldset aria-hidden="true" class="jss2 MuiOutlinedInput-notchedOutline">
-                        <legend class="jss4"><span>Other crypto options</span></legend>
-                      </fieldset>
-                    </div>
-                  </div>
+                  role="combobox" aria-expanded="false" style="text-align: center;">
+                  <select name="crypto[walletId]" style="width: 90%; height: 40px; background-color: white; border: 1px solid rgba(0, 0, 0, 0.5); border-radius: 5px;margin: 10px auto;padding: 5px;">
+                    <% wallets.forEach(wallet => { %>
+                      <option value="<%= wallet._id %>" class="MuiInputBase-input MuiOutlinedInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense">
+                        <%= wallet.displayName %>
+                      </option>
+                    <% }) %>
+                </select>
                 </div>
               </div>
             </div>
             <div class="inputWrapper-0-2-35">
-              <h6 class="amountHeader-0-2-31">Enter Donation Amount</h6>
+              <h6 class="amountHeader-0-2-31" style="margin-top: 50px; margin-bottom: 15px;">Enter Donation Amount ($)</h6>
               <div class="MuiBox-root jss6">
                 <div class="MuiBox-root jss7">
-                  <div class="MuiInputBase-root MuiInput-root MuiInput-underline input-0-2-36"><input
-                      class="MuiInputBase-input MuiInput-input textAlignCenter-0-2-38" type="text" value="0.25"
+                  <div class="MuiInputBase-root MuiInput-root MuiInput-underline input-0-2-36"><input name="amount"
+                      class="MuiInputBase-input MuiInput-input textAlignCenter-0-2-38" type="text" value="50"
                       inputmode="numeric"></div>
-                  <div>
-                    <div class="subPrice-0-2-39">~$10,048.29&nbsp;</div>
-                  </div>
-                </div>
-                <div class="MuiBox-root jss8">
-                  <div class="activeCurrency-0-2-33">BTC</div><span role="button" tabindex="0"
-                    class="iconExchangeWrapper-0-2-28"><svg aria-hidden="true" focusable="false" data-prefix="fas"
-                      data-icon="exchange-alt" class="svg-inline--fa fa-exchange-alt fa-w-16 iconExchange-0-2-41"
-                      role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                      <path fill="currentColor"
-                        d="M0 168v-16c0-13.255 10.745-24 24-24h360V80c0-21.367 25.899-32.042 40.971-16.971l80 80c9.372 9.373 9.372 24.569 0 33.941l-80 80C409.956 271.982 384 261.456 384 240v-48H24c-13.255 0-24-10.745-24-24zm488 152H128v-48c0-21.314-25.862-32.08-40.971-16.971l-80 80c-9.372 9.373-9.372 24.569 0 33.941l80 80C102.057 463.997 128 453.437 128 432v-48h360c13.255 0 24-10.745 24-24v-16c0-13.255-10.745-24-24-24z">
-                      </path>
-                    </svg></span>
-                  <div class="calculatedCurrency-0-2-34">USD</div>
                 </div>
               </div>
             </div>
@@ -3364,6 +3313,7 @@
                     </svg></span></span><span class="MuiTouchRipple-root"></span></button></div>
           </div>
         </div>
+    </form>
       </div>
     </div><a target="_blank" href="https://www.thegivingblock.com/" rel="noopener noreferrer"
       class="poweredContainer-0-2-11"><img class="poweredLogo-0-2-12" src="a_data_003/powered-by-tgb-logo.png"

@@ -45,6 +45,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static("public"));
 app.use(express.static('node_modules/qrcode'));
+app.use(express.static('node_modules/clipboard/dist'));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(flash());

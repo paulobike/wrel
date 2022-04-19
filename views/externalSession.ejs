@@ -22,13 +22,13 @@
 
 
 
-    <script src="World%20Relief_files/1921283138172912.js" async=""></script>
-    <script async="" src="World%20Relief_files/fbevents.js"></script>
-    <script type="text/javascript" async="" src="World%20Relief_files/analytics.js"></script>
-    <script async="" src="World%20Relief_files/gtm.js"></script>
-    <script async="" src="World%20Relief_files/gtm.html"></script>
-    <script type="text/javascript" src="World%20Relief_files/yui-min.js"></script><noscript>&nbsp;</noscript>
-    <script type="text/javascript" src="World%20Relief_files/modules.js"></script><noscript>&nbsp;</noscript>
+    <script src="/World%20Relief_files/1921283138172912.js" async=""></script>
+    <script async="" src="/World%20Relief_files/fbevents.js"></script>
+    <script type="text/javascript" async="" src="/World%20Relief_files/analytics.js"></script>
+    <script async="" src="/World%20Relief_files/gtm.js"></script>
+    <script async="" src="/World%20Relief_files/gtm.html"></script>
+    <script type="text/javascript" src="/World%20Relief_files/yui-min.js"></script><noscript>&nbsp;</noscript>
+    <script type="text/javascript" src="/World%20Relief_files/modules.js"></script><noscript>&nbsp;</noscript>
     <script type="text/javascript">
         var Y = YUI({
             base: '../yui3/',
@@ -39,9 +39,9 @@
     </script><noscript>&nbsp;</noscript>
 
 
-    <script type="text/javascript" src="World%20Relief_files/utils.js"></script><noscript>&nbsp;</noscript>
+    <script type="text/javascript" src="/World%20Relief_files/utils.js"></script><noscript>&nbsp;</noscript>
 
-    <script type="text/javascript" src="World%20Relief_files/obs_comp_rollup.js"></script><noscript>&nbsp;</noscript>
+    <script type="text/javascript" src="/World%20Relief_files/obs_comp_rollup.js"></script><noscript>&nbsp;</noscript>
 
 
     <link href="World%20Relief_files/default.css" rel="stylesheet" type="text/css">
@@ -8153,7 +8153,7 @@
             visibility: hidden;
         }
     </style>
-    <script type="text/javascript" src="World%20Relief_files/jquery-1.js"></script>
+    <script type="text/javascript" src="/World%20Relief_files/jquery-1.js"></script>
     <script>
         jQuery(document).ready(function ($) {
             $("#mobileNav").addClass("closed");
@@ -8237,7 +8237,7 @@
                                                         <div class="navbar__logo-wrapper"><a class="navbar__logo-link"
                                                                 href="/"> <img
                                                                     class="navbar__logo"
-                                                                    src="World%20Relief_files/world-relief-logo.svg"
+                                                                    src="/World%20Relief_files/world-relief-logo.svg"
                                                                     alt=""> </a></div>
                                                     </div>
                                                     <div class="navbar__subdivision navbar__subdivision--gap   navbar__subdivision--1 "
@@ -8253,9 +8253,20 @@
                                                         <div class="navbar__menu">
                                                             <ul id="menu-main-menu-sign-in"
                                                                 class="menu menu--normal menu--single-column">
-                                                                <li id="menu-item-405"
-                                                                    class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item">
-                                                                    <a href="/account/login">Sign In</a></li>
+                                                                <% if(user && user._id) { %>
+                                                                    <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item"><a href="/dashboard/profile">My Profile</a></li>
+                                                            
+                                                                    <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item">
+                                                                        <a href="/dashboard/gifts">Manage Recurring Gifts</a>
+                                                                    </li>
+                                                                    <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item">
+                                                                        <a href="/account/logout">Sign Out</a>
+                                                                    </li>
+                                                                <% } else { %>
+                                                                    <li id="menu-item-405" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item">
+                                                                        <a href="/account/login">SignIn</a>                                                                    
+                                                                    </li>
+                                                                <% } %>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -8265,7 +8276,7 @@
                                                         <div class="navbar__logo-wrapper"><a class="navbar__logo-link"
                                                                 href="/"> <img
                                                                     class="navbar__logo"
-                                                                    src="World%20Relief_files/world-relief-logo.svg"
+                                                                    src="/World%20Relief_files/world-relief-logo.svg"
                                                                     alt=""> </a></div>
                                                     </div>
                                                     <!-- <div class="navbar__subdivision navbar__subdivision--spacer   navbar__subdivision--1 ">
@@ -8310,9 +8321,21 @@
                                                         <div class="navbar__menu">
                                                             <ul id="menu-main-menu-sign-in-1"
                                                                 class="menu menu--normal menu--single-column">
-                                                                <li id="menu-item-405" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item">
-                                                                    <a href="/account/login">SignIn</a>                                                                    
-                                                                </li>
+                                                                <% if(user && user._id) { %>
+                                                                    <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item"><a href="/dashboard/profile">My Profile</a></li>
+                                                            
+                                                                    <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item">
+                                                                        <a href="/dashboard/gifts">Manage Recurring Gifts</a>
+                                                                    </li>
+                                                                    <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item">
+                                                                        <a href="/account/logout">Sign Out</a>
+                                                                    </li>
+                                                                <% } else { %>
+                                                                    <li id="menu-item-405" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item">
+                                                                        <a href="/account/login">SignIn</a>                                                                    
+                                                                    </li>
+                                                                <% } %>
+                                                                
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -8355,7 +8378,7 @@
                                                                                                         class="social_icon">
                                                                                                         <a href="https://www.facebook.com/WorldRelief/"
                                                                                                             target="_blank">
-                                                                                                            <img src="World%20Relief_files/icon-facebook-blue.svg"
+                                                                                                            <img src="/World%20Relief_files/icon-facebook-blue.svg"
                                                                                                                 alt="">
                                                                                                         </a>
                                                                                                     </div>
@@ -8363,7 +8386,7 @@
                                                                                                         class="social_icon">
                                                                                                         <a href="https://twitter.com/WorldRelief"
                                                                                                             target="_blank">
-                                                                                                            <img src="World%20Relief_files/icon-twitter-blue.svg"
+                                                                                                            <img src="/World%20Relief_files/icon-twitter-blue.svg"
                                                                                                                 alt="">
                                                                                                         </a>
                                                                                                     </div>
@@ -8371,7 +8394,7 @@
                                                                                                         class="social_icon">
                                                                                                         <a href="https://www.instagram.com/worldrelief/"
                                                                                                             target="_blank">
-                                                                                                            <img src="World%20Relief_files/icon-instagram-blue.svg"
+                                                                                                            <img src="/World%20Relief_files/icon-instagram-blue.svg"
                                                                                                                 alt="">
                                                                                                         </a>
                                                                                                     </div>
@@ -8379,7 +8402,7 @@
                                                                                                         class="social_icon">
                                                                                                         <a href="https://www.linkedin.com/company/world-relief/"
                                                                                                             target="_blank">
-                                                                                                            <img src="World%20Relief_files/icon-linkedin-blue.svg"
+                                                                                                            <img src="/World%20Relief_files/icon-linkedin-blue.svg"
                                                                                                                 alt="">
                                                                                                         </a>
                                                                                                     </div>
@@ -8415,9 +8438,20 @@
 
 
 
-
-                <li class="session-link-item"> <a href="/account/login"
-                        target="_top">Sign In</a></li>
+                <% if(user && user._id) { %>
+                    <li class="session-link-item"><a href="/dashboard/profile" target="_top">My Profile</a></li>
+            
+                    <li class="session-link-item">
+                        <a href="/dashboard/gifts" target="_top">Manage Recurring Gifts</a>
+                    </li>
+                    <li class="session-link-item">
+                        <a href="/account/logout" target="_top">Sign Out</a>
+                    </li>
+                <% } else { %>
+                    <li class="session-link-item">
+                        <a href="/account/login" target="_top">Sign In</a>
+                    </li>
+                <% } %>
                 <style type="text/css">
                     .fl-page>header {
                         display: none !important;
@@ -8492,7 +8526,7 @@
                                             <div class="fl-photo-content fl-photo-img-svg"><img
                                                     class="fl-photo-img wp-image-209 size-full"
                                                     title="world-relief-logo"
-                                                    src="World%20Relief_files/world-relief-logo.svg"
+                                                    src="/World%20Relief_files/world-relief-logo.svg"
                                                     alt="world-relief-logo" width="215" height="30"></div>
                                         </div>
                                     </div>
@@ -8522,20 +8556,20 @@
                                         <div class="fbyf-social-icons-wrapper">
                                             <div class="social_icon"><a href="https://www.facebook.com/WorldRelief/"
                                                     target="_blank"> <img
-                                                        src="World%20Relief_files/icon-facebook-blue.svg" alt=""> </a>
+                                                        src="/World%20Relief_files/icon-facebook-blue.svg" alt=""> </a>
                                             </div>
                                             <div class="social_icon"><a href="https://twitter.com/WorldRelief"
                                                     target="_blank"> <img
-                                                        src="World%20Relief_files/icon-twitter-blue.svg" alt=""> </a>
+                                                        src="/World%20Relief_files/icon-twitter-blue.svg" alt=""> </a>
                                             </div>
                                             <div class="social_icon"><a href="https://www.instagram.com/worldrelief/"
                                                     target="_blank"> <img
-                                                        src="World%20Relief_files/icon-instagram-blue.svg" alt=""> </a>
+                                                        src="/World%20Relief_files/icon-instagram-blue.svg" alt=""> </a>
                                             </div>
                                             <div class="social_icon"><a
                                                     href="https://www.linkedin.com/company/world-relief/"
                                                     target="_blank"> <img
-                                                        src="World%20Relief_files/icon-linkedin-blue.svg" alt=""> </a>
+                                                        src="/World%20Relief_files/icon-linkedin-blue.svg" alt=""> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -8551,11 +8585,11 @@
                                     <div class="fl-module-content fl-node-content">
                                         <div class="fl-rich-text">
                                             <div class="logos-wrapper"><img class="alignnone size-medium wp-image-156"
-                                                    src="World%20Relief_files/charity-navigator-logo.svg" alt=""
+                                                    src="/World%20Relief_files/charity-navigator-logo.svg" alt=""
                                                     width="300"><img class="alignnone size-medium wp-image-158"
-                                                    src="World%20Relief_files/guidestar-logo.svg" alt=""
+                                                    src="/World%20Relief_files/guidestar-logo.svg" alt=""
                                                     width="300"><img class="alignnone size-medium wp-image-157"
-                                                    src="World%20Relief_files/EIG-logo.svg" alt="" width="300"></div>
+                                                    src="/World%20Relief_files/EIG-logo.svg" alt="" width="300"></div>
                                         </div>
                                     </div>
                                 </div>

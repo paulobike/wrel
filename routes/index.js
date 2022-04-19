@@ -228,7 +228,7 @@ router.post('/reset_password', (req, res, next) => {
 
 router.get("/logout", (req, res) => {
     req.logOut();
-    res.redirect("/");
+    res.redirect(config.FRONT_URL);
 });
 
 

@@ -25,7 +25,8 @@ var transactionSchema = new mongoose.Schema({
         accountType: String,
     },
     crypto: {
-        currency: String
+        amount: Number,
+        walletId: { type: mongoose.Schema.Types.ObjectId, ref: 'Wallet'}
     },
     status: {type: String},
     user: {
@@ -36,6 +37,7 @@ var transactionSchema = new mongoose.Schema({
         username: String
     },
     title: String,
+    firstname: String,
     lastname: String,
     suffix: String,
     email: String,

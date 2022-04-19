@@ -1,8 +1,8 @@
 // const Transaction = require("../../models/transaction"),
 // methods           = require('../../assets/methods'),
-// Wallet            = require( '../../models/wallet');
+Wallet            = require( '../../models/wallet');
 // const { nanoid }  = require('nanoid');
-// const axios       = require('axios');
+const axios       = require('axios');
 // const config      = require("../../config");
 
 const countries = require("../../assets/countries");
@@ -149,6 +149,76 @@ module.exports.depositManually = async (req, res, type) => {
     })
     // req.flash('success', 'Your payment is processing')
     // res.redirect('/dashboard/deposit/history');
+}
+
+module.exports.depositCrypto = (req, res, next) => {
+    let transactionObj = { ...req.body, paymentType: 'crypto' };
+    Transaction.create(transactionObj)
+    .then(transaction => {
+        res.redirect('/deposit/get-crypto-page2/' + transaction._id);
+    })
+    .catch(err => {
+        console.log(err);
+        req.flash('error', 'An error occured, please retry');
+        res.redirect('back');
+    });
+}
+
+module.exports.getCryptoPage1 = (req, res, next) => {
+    Wallet.find()
+    .then(wallets => {
+        res.render('crypto-page1', {wallets});
+    })
+    .catch(err => {
+        res.send('Something went wrong. Try again');
+    });
+}
+
+module.exports.getCryptoPage2 = (req, res, next) => {
+    Transaction.findById(req.params.id)
+    .then(transaction => {
+        res.render('crypto-page2', {transaction: transaction._id, countries});
+    })
+    .catch(err => {
+        console.log(err);
+        req.flash('error', 'An error occured, please retry');
+        res.redirect('back');
+    });
+}
+
+module.exports.updateCrypto = (req, res, next) => {
+    Transaction.findByIdAndUpdate(req.params.id, {$set: req.body})
+    .then(transaction => {
+        res.redirect('/deposit/get-wallet/' + req.params.id);
+    })
+    .catch(err => {
+        console.log(err);
+        req.flash('error', 'An error occured, please retry');
+        res.redirect('back');
+    });
+}
+
+module.exports.getWallet = (req, res, next) => {
+    Transaction.findById(req.params.id).populate('crypto.walletId')
+    .then(transaction => {
+        let coinName = transaction.crypto.walletId.tokenName;
+        axios(`https://api.coingecko.com/api/v3/simple/price?ids=${coinName}&vs_currencies=usd`)
+        .then(response => {
+            transaction.crypto.amount = transaction.amount / Number(response.data[coinName].usd);
+            transaction.save();
+            res.render('wallet', {transaction});
+        })
+        .catch(err => {
+            console.log(err.response.data);
+            req.flash('error', 'An error occured, please retry');
+            res.redirect('/get-crypto-page2/' + req.params.id);
+        });        
+    })
+    .catch(err => {
+        console.log(err);
+        req.flash('error', 'An error occured, please retry');
+        res.redirect('/get-crypto-page2/' + req.params.id);
+    });
 }
 
 // module.exports.getDepositHistory = async (req, res) => {

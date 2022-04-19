@@ -8374,7 +8374,7 @@ input[type=checkbox] {display:block; float:left;}
                                             <div class="navbar-wrapper">
                                               <div class="navbar navbar--desktop">
                                                 <div class="navbar__subdivision  navbar__subdivision--0 ">
-                                                <div class="navbar__logo-wrapper"><a class="navbar__logo-link" href="/"> <img class="navbar__logo" src="/World%20Relief_files/world-relief-logo.svg" alt=""> </a></div>
+                                                <div class="navbar__logo-wrapper"><a class="navbar__logo-link" href="<%= config.FRONT_URL %>"> <img class="navbar__logo" src="/World%20Relief_files/world-relief-logo.svg" alt=""> </a></div>
                                                 </div>
                                                 <div class="navbar__subdivision navbar__subdivision--gap   navbar__subdivision--1 " style="flex: 0 1 10px;">&nbsp;</div>
                                                 <div class="navbar__subdivision navbar__subdivision--spacer   navbar__subdivision--3 ">&nbsp;</div>
@@ -8382,9 +8382,16 @@ input[type=checkbox] {display:block; float:left;}
                                                 <div class="navbar__subdivision  navbar__subdivision--2 ">
                                                 <div class="navbar__menu">
                                                 <ul id="menu-main-menu" class="menu menu--normal menu--panel">
-                                                <li id="menu-item-398" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/dashboard/profile">My Profile</a></li>
+                                                    <% if(user && user._id) { %>
+                                                        <li id="menu-item-398" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/dashboard/profile">My Profile</a></li>
                                                 
-                                                <li id="menu-item-397" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/dashboard/gifts">Manage Recurring Gifts</a></li>
+                                                        <li id="menu-item-397" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/dashboard/gifts">Manage Recurring Gifts</a></li>
+                                                        <li id="menu-item-405" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item"><a href="/account/logout">Sign Out</a></li>
+                                                    <% } else { %>
+                                                        <li id="menu-item-397" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/account/login">Sign In</a></li>
+                                                    <% } %>
+                                                
+                                                
                                                 </ul>
                                                 </div>
                                                 </div>
@@ -8396,7 +8403,7 @@ input[type=checkbox] {display:block; float:left;}
                                                 <div class="navbar__subdivision  navbar__subdivision--6 ">
                                                 <div class="navbar__menu">
                                                 <ul id="menu-main-menu-sign-in" class="menu menu--normal menu--single-column">
-                                                <li id="menu-item-405" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item"><a href="/account/logout">Sign Out</a></li>
+                                                
                                                 </ul>
                                                 </div>
                                                 </div>
@@ -8404,7 +8411,7 @@ input[type=checkbox] {display:block; float:left;}
                                                 <div class="navbar navbar--mobile">
                                                     <div class="navbar__subdivision  navbar__subdivision--0 ">
                                                         <div class="navbar__logo-wrapper"><a class="navbar__logo-link"
-                                                                href="/"> <img
+                                                                href="<%= config.FRONT_URL %>"> <img
                                                                     class="navbar__logo"
                                                                     src="/World%20Relief_files/world-relief-logo.svg"
                                                                     alt=""> </a></div>
