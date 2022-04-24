@@ -208,11 +208,13 @@ router.post('/reset_password', (req, res, next) => {
         user.setPassword(password).then((newp) => {
             user.passwordHint = req.body.passwordHint;
             user.save();
-            passport.authenticate("local", {
-                successRedirect: '/dashboard',
-                failureRedirect: "/account/forgot_password/" + req.body.token,
-                failureFlash: "Something went wrong."
-            })(req, res, next);
+            req.login(user, err => {
+                if(err) {
+                    req.flash('error', 'Something went wrong!');
+                    return res.redirect("/account/forgot_password/" + req.body.token);
+                }
+                res.redirect('/dashboard');
+            });
         }).catch(err => {
             console.log(err);
             req.flash("error", "An error occured. Try again.");
