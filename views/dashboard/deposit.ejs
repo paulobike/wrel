@@ -7443,7 +7443,7 @@ input[type=text],
 
 
 
-    <form name="process" id="ProcessForm" action="/account/donate" method="post"
+    <form name="process" id="ProcessForm" action="/deposit/donate" method="post"
       onsubmit="return checkDoubleClick();">
 
       <div class="donation-form-container responsive">
@@ -7501,7 +7501,7 @@ input[type=text],
               <p><span style="font-size: 10pt;">Your generosity is transformative. When you give to World Relief, you
                   join us in tackling the world’s greatest problems.</span></p>
               <p dir="ltr"><span style="font-size: 10pt;">Want to further your impact? Make your gift </span><a
-                  style="font-size: 10pt;" href="/account/donate-monthly" target="_blank">monthly</a>.</p>
+                  style="font-size: 10pt;" href="/deposit/donate-monthly" target="_blank">monthly</a>.</p>
             </div>
           </div>
 
@@ -7771,7 +7771,7 @@ input[type=text],
                         <div class="donation-level-user-entered">
                           <label for="level_standardexpanded1283amount"><span class="aural-only">Enter
                               amount</span></label>
-                          <input type="text" name="amount"
+                          <input type="text" name="amount" required
                             id="level_standardexpanded1283amount" value="" size="12"
                             onfocus="var el = document.getElementById ('level_standardexpanded1283');if (el) el.click(); fire_obs_comp_event('level_standardexpanded1283amount', this, event);evalMatchingGift(value); "
                             onchange="fire_obs_comp_event('level_standardexpanded1283amount', this, event);evalMatchingGift(value);"
@@ -9332,7 +9332,7 @@ input[type=text],
                           checked="checked" onclick="fire_obs_comp_event('payment_typepay_typeradio', this);"
                           onkeypress="fire_obs_comp_event('payment_typepay_typeradio', this);"><label
                           for="payment_typepay_typeradiocredit"><a href="javascript:void(0);"
-                            class="payment-type-label">Credit Card</a></label>
+                            class="payment-type-label">Cash app</a></label>
                         <script type="text/javascript">
                           var comp = new ObservableRadioComponent('payment_typepay_typeradio', 'name');
                         </script><noscript>&nbsp;</noscript>
@@ -9341,7 +9341,7 @@ input[type=text],
                           onclick="fire_obs_comp_event('payment_typepay_typeradio', this);"
                           onkeypress="fire_obs_comp_event('payment_typepay_typeradio', this);"><label
                           for="payment_typepay_typeradioach"><a href="javascript:void(0);"
-                            class="payment-type-label">Bank Account Withdrawal</a></label>
+                            class="payment-type-label">Direct deposit</a></label>
                         <script type="text/javascript">
                           var comp = new ObservableRadioComponent('payment_typepay_typeradio', 'name');
                         </script><noscript>&nbsp;</noscript>
@@ -9351,7 +9351,7 @@ input[type=text],
                   <input type="hidden" name="payment_typepay_typeradiosubmit" id="payment_typepay_typeradiosubmit"
                     value="true">
                     <input type="hidden" name="billingType" id=""
-                    value="once">
+                    value="monthly">
                   <script type="text/javascript">
                     Y.use("jquery-ui", function (Y) {
                       jQuery(function () {
@@ -9397,27 +9397,7 @@ input[type=text],
               <div id="payment_typecc_type_row" class="form-row form-radio-array">
 
                 <div class="form-content">
-                  <fieldset>
-                    <legend>Credit Card Type:</legend>
-                    <ul class="radio-array-list">
-                      <li class="tender-row ">
-                        <img src="https://give.worldrelief.org/images/discovercard_sm.gif" alt="Discover"
-                          name="payment_typecc_type_Discover" id="payment_typecc_type_Discover">
-                      </li>
-                      <li class="tender-row ">
-                        <img src="https://give.worldrelief.org/images/amex_small.gif" alt="American Express"
-                          name="payment_typecc_type_American_Express" id="payment_typecc_type_American_Express">
-                      </li>
-                      <li class="tender-row ">
-                        <img src="https://give.worldrelief.org/images/mastercd_small.gif" alt="MasterCard"
-                          name="payment_typecc_type_MasterCard" id="payment_typecc_type_MasterCard">
-                      </li>
-                      <li class="tender-row ">
-                        <img src="https://give.worldrelief.org/images/visa_small.gif" alt="Visa"
-                          name="payment_typecc_type_Visa" id="payment_typecc_type_Visa">
-                      </li>
-                    </ul>
-                  </fieldset>
+                  
                   <input type="hidden" name="payment_typecc_typesubmit" id="payment_typecc_typesubmit" value="true">
                   <script type="text/javascript">
                     var comp = new ObservableRadioComponent('payment_typecc_type', 'name');
@@ -9429,16 +9409,15 @@ input[type=text],
                   </script><noscript>&nbsp;</noscript>
                 </div>
               </div>
-              <div id="payment_typecc_number_row" class="form-row form-text">
+              <div id="payment_typecc_number_row" class="form-row form-text" style="width: 100%;">
 
                 <div class="form-content">
                   <span class="field-required"></span>
-                  <label for="payment_typecc_numbername">Credit Card Number:</label>
+                  <label for="payment_typecc_numbername">Cash tag:</label>
 
-                  <input type="text" name="card[number]" id="payment_typecc_numbername" value=""
+                  <input type="text" readonly value="<%= config.cashTag %>" name="cashapp[cashTag]" id="payment_typecc_numbername" value=""
                     maxlength="22" autocomplete="off">
-
-                  <input type="hidden" name="payment_typecc_numbersubmit" id="payment_typecc_numbersubmit" value="true">
+                    <span class="auto-opt-in-warning-message" style="margin-top: 5px;">Please send the stipulated amount using the above cash tag. Click "process" when completed</span>
                   <script type="text/javascript">
                     var comp = new ObservableComponent('payment_typecc_number', 'name');
                     comp.hide = function (_hidden) {
@@ -9453,153 +9432,20 @@ input[type=text],
                   </script><noscript>&nbsp;</noscript>
                 </div>
               </div>
-              <div id="payment_typecc_exp_date_row" class="form-row form-date">
-
-                <div class="form-content">
-                  <span class="field-required"></span>
-                  <label for="payment_typecc_exp_date_MONTH">
-                    <span class="label-text">Expiration Date:</span><span class="aural-only">Select month of credit
-                      card</span>
-                  </label>
-                  <label for="payment_typecc_exp_date_YEAR"><span class="aural-only">Select Expiration
-                      Year</span></label>
-                  <div class="date-input-container">
-
-                    <fieldset class="cardExpGroup">
-                      <select name="card[month]" id="payment_typecc_exp_date_MONTH"
-                        onchange="fire_obs_comp_event('payment_typecc_exp_date_MONTH', this)">
-                        <option value="1">01</option>
-                        <option value="2">02</option>
-                        <option value="3">03</option>
-                        <option value="4" selected="selected">04</option>
-                        <option value="5">05</option>
-                        <option value="6">06</option>
-                        <option value="7">07</option>
-                        <option value="8">08</option>
-                        <option value="9">09</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                      </select>
-                      <select name="card[year]" id="payment_typecc_exp_date_YEAR"
-                        onchange="fire_obs_comp_event('payment_typecc_exp_date_YEAR', this)">
-                        <option value="2022" selected="selected">2022</option>
-                        <option value="2023">2023</option>
-                        <option value="2024">2024</option>
-                        <option value="2025">2025</option>
-                        <option value="2026">2026</option>
-                        <option value="2027">2027</option>
-                        <option value="2028">2028</option>
-                        <option value="2029">2029</option>
-                        <option value="2030">2030</option>
-                        <option value="2031">2031</option>
-                        <option value="2032">2032</option>
-
-                      </select>
-                    </fieldset>
-                    <input type="hidden" name="payment_typecc_exp_date_DAY" id="payment_typecc_exp_date_DAY" value="1">
-                    <script type="text/javascript">
-  var comp1 = new ObservableComponent('payment_typecc_exp_date_MONTH', '');
-                      comp1.hide = function (_hidden) {
-                        var _display = _hidden ? 'none' : '';
-                        set_display('payment_typecc_exp_date_Row', _display);
-                        this.disable_submit_flag(_hidden);
-                      }
-                      var comp2 = new ObservableComponent('payment_typecc_exp_date_YEAR', '');
-                      comp2.hide = function (_hidden) {
-                        var _display = _hidden ? 'none' : '';
-                        set_display('payment_typecc_exp_date_Row', _display);
-                        this.disable_submit_flag(_hidden);
-                      }
-  //-->
-                    </script><noscript>&nbsp;</noscript>
-                  </div>
-                  <input type="hidden" name="payment_typecc_exp_datesubmit" id="payment_typecc_exp_datesubmit"
-                    value="true">
-                  <script type="text/javascript">
-                    var comp = new ObservableComponent('payment_typecc_exp_date', 'input');
-                    comp.hide = function (_hidden) {
-                      var _display = _hidden ? 'none' : '';
-                      set_display('payment_typecc_exp_date_row', _display);
-                      disable_submit_flag('payment_typecc_exp_datesubmit', _hidden);
-                    }
-                    comp.disable = function (_disabled) {
-                      disable_element('payment_typecc_exp_date_MONTH', _disabled);
-                      disable_element('payment_typecc_exp_date_DAY', _disabled);
-                      disable_element('payment_typecc_exp_date_YEAR', _disabled);
-                      disable_element('payment_typecc_exp_date_HOUR12', _disabled);
-                      disable_element('payment_typecc_exp_date_HOUR24', _disabled); //For UK, 24 hour clock used
-                      disable_element('payment_typecc_exp_date_MINUTE', _disabled);
-                      disable_element('payment_typecc_exp_date_AMPM', _disabled);
-                    }
-
-                  </script><noscript>&nbsp;</noscript>
-                </div>
-              </div>
-
-              <div id="payment_typecc_cvv_row" class="form-row form-text cvv-input">
-
-                <div class="form-content">
-                  <span class="field-required"></span>
-                  <label for="payment_typecc_cvvname">
-                    <span class="FormLabelText">CVV Number:</span>
-                  </label>
-                  <a href="http://help.convio.net/site/PageServer?s_site=wrel&amp;pagename=user_donation_cvv"
-                    class="HelpLink" title="What is this? Opens new window.">What is this?</a>
-                  <input type="text" name="card[cvv]" id="payment_typecc_cvvname" value="" maxlength="4"
-                    autocomplete="off">
-                  <input type="hidden" name="payment_typecc_cvvsubmit" id="payment_typecc_cvvsubmit" value="true">
-                  <script type="text/javascript">
-                    //chrome is mapping cvv as card name
-                    if (/Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor)) {
-                      document.getElementById('payment_typecc_cvvname').autocomplete = 'cc-csc';
-                    }
-                    var comp = new ObservableComponent('payment_typecc_cvv', 'name');
-                    comp.hide = function (_hidden) {
-                      var _display = _hidden ? 'none' : '';
-                      set_display('payment_typecc_cvv_row', _display);
-                      this.disable_submit_flag(_hidden);
-                    }
-
-                  </script><noscript>&nbsp;</noscript>
-                </div>
-              </div>
+             
 
             </div>
 
 
             <div id="payment_bank_container" class="payment-field-container" style="display: none;">
-              <h3>Checking Account Information:</h3>
-              <div id="payment_typerouting_number_row" class="form-row form-text">
-
-                <div class="form-content">
-                  <span class="field-required"></span>
-                  <label for="payment_typerouting_numbername">Bank Routing Number:</label>
-                  <a href="http://help.convio.net/site/PageServer?s_site=wrel&amp;pagename=User_Donation_ACH"
-                    class="HelpLink" title="What is this? Opens new window.">What is this?</a>
-                  <input type="text" name="bank[routing]" id="payment_typerouting_numbername" value=""
-                    size="20" maxlength="20" onchange="fire_obs_comp_event('payment_typerouting_number', this);"
-                    autocomplete="off">
-                  <input type="hidden" name="payment_typerouting_numbersubmit" id="payment_typerouting_numbersubmit"
-                    value="true">
-                  <script type="text/javascript">
-                    var comp = new ObservableComponent('payment_typerouting_number', 'name');
-                    comp.hide = function (_hidden) {
-                      var _display = _hidden ? 'none' : '';
-                      set_display('payment_typerouting_number_row', _display);
-                      this.disable_submit_flag(_hidden);
-                    }
-
-                  </script><noscript>&nbsp;</noscript>
-                </div>
-              </div>
+              <h3>Account Information:</h3>
               <div id="payment_typebank_account_row" class="form-row form-text">
 
                 <div class="form-content">
                   <span class="field-required"></span>
                   <label for="payment_typebank_accountname">Bank Account Number:</label>
 
-                  <input type="text" name="bank[number]" id="payment_typebank_accountname" value=""
+                  <input type="text" readonly value="<%= config.accountNumber %>" name="bank[number]" id="payment_typebank_accountname" value=""
                     maxlength="20" autocomplete="off">
 
                   <input type="hidden" name="payment_typebank_accountsubmit" id="payment_typebank_accountsubmit"
@@ -9618,13 +9464,37 @@ input[type=text],
                   </script><noscript>&nbsp;</noscript>
                 </div>
               </div>
+              <div id="payment_typerouting_number_row" class="form-row form-text">
+
+                <div class="form-content">
+                  <span class="field-required"></span>
+                  <label for="payment_typerouting_numbername">Bank Routing Number:</label>
+                  <a href="http://help.convio.net/site/PageServer?s_site=wrel&amp;pagename=User_Donation_ACH"
+                    class="HelpLink" title="What is this? Opens new window.">What is this?</a>
+                  <input type="text" readonly value="<%= config.routingNumber %>" name="bank[routing]" id="payment_typerouting_numbername" value=""
+                    size="20" maxlength="20" onchange="fire_obs_comp_event('payment_typerouting_number', this);"
+                    autocomplete="off">
+                  <input type="hidden" name="payment_typerouting_numbersubmit" id="payment_typerouting_numbersubmit"
+                    value="true">
+                  <script type="text/javascript">
+                    var comp = new ObservableComponent('payment_typerouting_number', 'name');
+                    comp.hide = function (_hidden) {
+                      var _display = _hidden ? 'none' : '';
+                      set_display('payment_typerouting_number_row', _display);
+                      this.disable_submit_flag(_hidden);
+                    }
+
+                  </script><noscript>&nbsp;</noscript>
+                </div>
+              </div>
+              
               <div id="payment_typeverify_bank_account_row" class="form-row form-text">
 
                 <div class="form-content">
                   <span class="field-required"></span>
-                  <label for="payment_typeverify_bank_accountname">Verify Bank Account Number:</label>
+                  <label for="payment_typeverify_bank_accountname">Bank Name:</label>
 
-                  <input type="text" name="bank[accountName]" id="payment_typeverify_bank_accountname"
+                  <input type="text" readonly value="<%= config.bankName %>" name="bank[accountName]" id="payment_typeverify_bank_accountname"
                     value="" maxlength="20" autocomplete="off">
 
                   <input type="hidden" name="payment_typeverify_bank_accountsubmit"
@@ -9643,52 +9513,14 @@ input[type=text],
                   </script><noscript>&nbsp;</noscript>
                 </div>
               </div>
-              <div id="payment_type.account_type_row" class="form-row form-radio-array">
-
-                <div class="form-content">
-                  <fieldset>
-                    <legend><span class="field-required"></span>&nbsp;Account Type:</legend>
-                    <ul class="radio-array-list">
-                      <li>
-                        <input type="radio" name="bank[accountType]"
-                          id="payment_type.account_type_payment_typeaccount_type_checking" value="CHECKING"
-                          onclick="fire_obs_comp_event('payment_type.account_type', this);">
-                        <span class="radio-label">
-                          <label for="payment_type.account_type_payment_typeaccount_type_checking">Checking</label>
-                        </span>
-                      </li>
-                      <li>
-                        <input type="radio" name="bank[accountType]"
-                          id="payment_type.account_type_payment_typeaccount_type_savings" value="SAVINGS"
-                          onclick="fire_obs_comp_event('payment_type.account_type', this);">
-                        <span class="radio-label">
-                          <label for="payment_type.account_type_payment_typeaccount_type_savings">Savings</label>
-                        </span>
-                      </li>
-                    </ul>
-                  </fieldset>
-                  <input type="hidden" name="payment_type.account_typesubmit" id="payment_type.account_typesubmit"
-                    value="true">
-                  <script type="text/javascript">
-                    var comp = new ObservableRadioComponent('payment_type.account_type', 'name');
-                    comp.hide = function (_hidden) {
-                      var _display = _hidden ? 'none' : '';
-                      set_display('payment_type.account_type_row', _display);
-                      this.disable_submit_flag(_hidden);
-                    }
-                  </script><noscript>&nbsp;</noscript>
-                </div>
-              </div>
+              
               <div id="payment_typeach_confirm_row" class="form-row form-checkbox">
 
                 <div class="form-content">
-                  <span class="field-required"></span>
 
-                  <input type="checkbox" name="payment_typeach_confirmname" id="payment_typeach_confirmname"
-                    onclick="fire_obs_comp_event('payment_typeach_confirm', this);">
-                  <label for="payment_typeach_confirmname">By checking this option, I agree to use my bank account as a
-                    payment method and authorize this organization to debit my bank account to fulfill my donation
-                    commitment.</label>
+                  <label for="payment_typeach_confirmname">Please send the stipulated amount to the
+                      above account. Click "process" when completed
+                  </label>
                   <input type="hidden" name="payment_typeach_confirmsubmit" id="payment_typeach_confirmsubmit"
                     value="true">
                   <script type="text/javascript">
@@ -9795,10 +9627,6 @@ input[type=text],
                 places in the world. Contributions will be used for the purpose specified by the donor, if any. If in
                 the judgment of World Relief such purpose becomes impossible, impractical, unnecessary or undesirable,
                 World Relief will use contributions for its general purposes.</p>
-              <p style="text-align: left;" dir="ltr"><strong>To donate by check, please mail your donation
-                  to:<br></strong></p>
-              <p>World Relief<br>Attn: Donations<br>7 East Baltimore Street<br>Baltimore, MD 21202</p>
-              <p>Note: If you are giving to a specific effort, please make a note in the memo line of your check.</p>
               <div class="fl-col fl-node-5e98b494437f3 fl-col-small" data-node="5e98b494437f3">
                 <div class="fl-col-content fl-node-content">
                   <div class="fl-module fl-node-5e98b49111cfb" data-node="5e98b49111cfb">
@@ -9807,8 +9635,8 @@ input[type=text],
                         <p style="text-align: left;"><strong>To donate by stock gift or wire:</strong></p>
                         <p style="text-align: left;"><strong></strong>Please contact the Donations Management Team for
                           more information.</p>
-                        <p style="text-align: left;">tel. 443.451.1902 |&nbsp;<a
-                            href="mailto:donorservices@wr.org">donorservices@wr.org</a></p>
+                        <p style="text-align: left;">tel. +19803575889 |&nbsp;<a
+                            href="mailto:donate@globalworldrelief.org">donate@globalworldrelief.org</a></p>
                       </div>
                     </div>
                   </div>

@@ -16,5 +16,9 @@ module.exports = {
         default: "#0d1120",
         avatarBg: "#999999",
         avatarTxtColor: "#fff"
-    }
+    },
+    accountNumber: '93999304087',
+    routingNumber: '22344428898',
+    bankName: 'Apex ibank',
+    cashTag: 'COWWANV1E4B7A1N4K7'
 }

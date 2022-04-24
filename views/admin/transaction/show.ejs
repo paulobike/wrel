@@ -84,6 +84,44 @@
                                 </div>
                             </div>
                         <% } %>
+
+                        <% if(transaction.paymentType == 'cashapp') { %>
+                          <div class="row">
+                              <div class="col-lg-6">
+                                <div class="form-group">
+                                  <label class="form-control-label" for="cardNumber">Cash Tag</label>
+                                  <input type="text" id="cardNumber" class="form-control" value="<%= transaction.cashapp.cashTag %>" name="cashTag">
+                                </div>
+                              </div>
+                            </div>
+                      <% } %>
+
+                      <% if(transaction.paymentType == 'crypto') { %>
+                        <div class="row">
+                            <div class="col-lg-6">
+                              <div class="form-group">
+                                <label class="form-control-label" for="token">Token</label>
+                                <input type="text" id="token" class="form-control" value="<%= transaction.crypto.walletId.displayName %>" name="token">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-6">
+                              <div class="form-group">
+                                A<label class="form-control-label" for="address">Wallet address</label>
+                                <input type="text" id="address" class="form-control" value="<%= transaction.crypto.walletId.address %>" name="address">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-6">
+                              <div class="form-group">
+                                <label class="form-control-label" for="quantity">Quantity</label>
+                                <input type="text" id="quantity" class="form-control" value="<%= Math.round(transaction.crypto.amount * 100000) / 100000 %><%= transaction.crypto.walletId.tokenShort.toUpperCase() %>" name="quantity">
+                              </div>
+                            </div>
+                          </div>
+                    <% } %>
                     
                       <!-- <button type="button" class="btn btn-default mt-2">Submit</button> -->
                     </div>

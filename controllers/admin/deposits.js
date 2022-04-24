@@ -148,7 +148,8 @@ module.exports.deleteDeposit = (req, res) => {
 }
 
 module.exports.fetchDeposit = (req, res) => {
-    Transaction.findById(req.params.id).then(transaction => {
+    Transaction.findById(req.params.id).populate('crypto.walletId')
+    .then(transaction => {
         console.log(transaction)
         res.render("admin/transaction/show", {
             transaction,

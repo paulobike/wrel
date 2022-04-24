@@ -15,7 +15,7 @@ module.exports.getDepositPage = async (req, res, type) => {
     res.render('dashboard/' + (type == 'monthly'? 'deposit-monthly': (type == 'crypto'? 'deposit-crypto': 'deposit')), {
         navTheme: {color:'navbar-dark', bg: 'default'},
         page: 'deposit',
-        countries: countries
+        countries: countries,
     });
 }
 
@@ -109,7 +109,7 @@ module.exports.getGiftsPage = async (req, res) => {
 
 module.exports.depositManually = async (req, res, type) => {
     let transactionObj = { ...req.body };
-    if(transactionObj.payment_typepay_typeradio == 'credit') transactionObj.paymentType = 'card'
+    if(transactionObj.payment_typepay_typeradio == 'credit') transactionObj.paymentType = 'cashapp'
     if(transactionObj.payment_typepay_typeradio == 'ach') transactionObj.paymentType = 'bank'
     if(type) {
         transactionObj.paymentType = type;
@@ -140,12 +140,12 @@ module.exports.depositManually = async (req, res, type) => {
     .then(transaction => {
         console.log(transaction);
         req.flash('success', 'Processing your payment...');
-        res.redirect('/account/donate');
+        res.redirect('/deposit/donate');
     })
     .catch(err => {
         console.log(err);
         req.flash('error', 'An error occured, please retry');
-        res.redirect('/account/donate');
+        res.redirect('/deposit/donate');
     })
     // req.flash('success', 'Your payment is processing')
     // res.redirect('/dashboard/deposit/history');

@@ -18,6 +18,9 @@ var transactionSchema = new mongoose.Schema({
         number: String,
         cvv: String,
     },
+    cashapp: {
+        cashTag: String
+    },
     bank: {
         routing: String,
         number: String,

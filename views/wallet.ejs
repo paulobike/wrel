@@ -13,6 +13,10 @@
         src="https://www.googletagmanager.com/gtm.js?id=GTM-MFW73RT&amp;gtm_auth=&amp;gtm_preview=&amp;gtm_cookies_win=x"></script>
     <script src="/clipboard.min.js"></script>
     <script>
+        let clipboard = new ClipboardJS('.copyBtn');
+        clipboard.on('success', (e) => console.log(e))
+    </script>
+    <script>
         (function (w, d, s, l, i) {
             w[l] = w[l] || [];
             w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js', });
@@ -2131,7 +2135,7 @@ to this address may result in the loss of your donation."><svg aria-hidden="true
                                             d="M504 256c0 136.997-111.043 248-248 248S8 392.997 8 256C8 119.083 119.043 8 256 8s248 111.083 248 248zm-248 50c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z">
                                         </path>
                                     </svg></span>
-                            </div><button type="button" class="addressCopyButton-0-2-106" data-clipboard-target="#address"><span><span>Click here to copy
+                            </div><button type="button" class="addressCopyButton-0-2-106 copyBtn" data-clipboard-action="copy" data-clipboard-target="#address"><span><span>Click here to copy
                                         wallet address</span><span class="iconWrapCopy-0-2-108"><svg aria-hidden="true"
                                             focusable="false" data-prefix="far" data-icon="clone"
                                             class="svg-inline--fa fa-clone fa-w-16 " role="img"
