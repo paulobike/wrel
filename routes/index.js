@@ -62,11 +62,11 @@ router.get('/confirmation', (req, res) => {
                         html: `<p>Thank you for joining World Relief</p>
                         <p>User Name: <a href="mailto:${user.username}">${user.username}</a></p>
                         <p>Password: <a href="${url}">Set or reset my password now</a></p>
-                        <p><a href="${config.url}/account/login">Login here</a></p>
+                        <p><a href="${config.URL}/account/login">Login here</a></p>
                         <p>If there are multiple user names listed above, you have registered on our 
                         site more than one time with the same email address or are sharing this email
                         address with others.</p>
-                        <p>Sincerely,</p><p>World Relief</p>`,
+                        <p>Sincerely,</p><p>Global World Relief</p>`,
                         overrideHtml: false 
                     });
                     res.render('auth/confirmation', {user, page: 'Confirm email'});
@@ -166,7 +166,7 @@ router.post('/forgot_password', (req, res) => {
                             <p><a href="${url}">Set or reset my password now</a></p></p> 
                             <p>This link will expire in 72 hours.</p>
                             <p>Sincerely</p>
-                            <p>World Relief</p>`  
+                            <p>Global World Relief</p>`  
                         });
                         req.flash('success', `A mail has been sent to ${email}, Please follow instructions.`);
                         res.redirect('/account/forgot_password');             
