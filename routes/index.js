@@ -229,6 +229,10 @@ router.post('/reset_password', (req, res, next) => {
     });
 });
 
+router.get('/forgot_username', (req, res) => {
+    res.render('auth/forgot_username', {page: 'Forgot username'});
+});
+
 router.post('/forgot_username', (req, res) => {
     let email = req.body.email;
     User.find({username: email})
