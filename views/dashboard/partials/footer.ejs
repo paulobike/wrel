@@ -179,7 +179,11 @@ var themeopts = { "medium_breakpoint": "992", "mobile_breakpoint": "768" };
     clipboard.on('success', (e) => {
         e.clearSelection()
         e.trigger.value = 'Copied to clipboard';
-        setTimeout(() => {e.trigger.value = e.text}, 2000)
+        e.trigger.setAttribute('disabled', 'disabled');
+        setTimeout(() => {
+            e.trigger.value = e.text;
+            e.trigger.removeAttribute('disabled');
+        }, 2000)
     })
 </script>
 <style>
