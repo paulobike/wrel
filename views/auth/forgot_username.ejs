@@ -1,0 +1,97 @@
+<%- include('partials/header') %>
+    <div id="s63">
+
+
+
+
+
+        <span>&nbsp; </span> <br>
+        <div id="appAreaNoWidthClearFix">
+            <div id="login-div-content">
+                <div class="outer-border">
+                    <div class="header-block">
+                        <div class="banner-header">
+                            <strong>
+                                <a href="/account/login">User Login</a>
+                                &nbsp;&gt;&nbsp;User Name Recovery
+                            </strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="outer-border">
+                    <span>&nbsp; </span> <br>
+                    <table width="80%" cellspacing="0" cellpadding="2" border="0">
+                        <tbody>
+                            <tr valign="top">
+                                <td width="1%">
+                                    &nbsp;
+                                </td>
+                                <td width="60%">
+                                    <span><strong>What if I forgot my User Name?</strong></span> <br>
+                                    <span> If you do not remember your user name, the system can send it to you. Provide
+                                        the registered email address.</span> <br> <br>
+                                </td>
+                                <td width="39%"> &nbsp;</td>
+                            </tr>
+                            <tr valign="top">
+                                <td width="1%">
+                                    <p> </p>
+                                </td>
+                                <td width="70%">
+                                    <form action="/account/forgon_username" method="post">
+                                        <div class="login-form">
+                                            <div class="input-border">
+                                                <table summary="layout table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td colspan="3">
+                                                                <span> <strong>Account Information</strong> <span>
+                                                                    </span></span>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td colspan="3">
+                                                                <span class="Hint">* = Required Fields</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span>*</span>
+                                                            </td>
+                                                            <td>
+                                                                <span><label for="Email">Email:</label></span>
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" name="Email" id="Email"
+                                                                    maxlength="100">
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="actions">
+                                                <input type="submit" name="SendUserName" id="SendUserName"
+                                                    value="Submit" class="uc-button">
+                                            </div>
+                                            
+                                            <input type="hidden" name="SendUserName" id="SendUserName" value="submit">
+                                            <input type="hidden" name="CMD" id="CMD" value="ForgotLogin">
+                                        </div>
+                                    </form>
+                                </td>
+                                <td width="39%">
+                                    <div class="right-block">
+                                        <span><strong>Login Assistance</strong></span> <br> <br>
+                                        <span><a href="/account/forgot_password">Forgot Password?</a></span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="footer-block"> &nbsp;</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('partials/footer') %>

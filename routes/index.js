@@ -154,6 +154,7 @@ router.post('/forgot_password', (req, res) => {
                     } else {
                         let url = config.URL + '/account/forgot_password/' + emailToken;                        
                         methods.sendMail({
+                            from: `Site Administrator <${config.MAIL_USER}>`,
                             to: email,
                             subject: 'Your Password Reset Information',
                             html: `<p>Dear ${users[0].firstname}</p>
@@ -226,6 +227,40 @@ router.post('/reset_password', (req, res, next) => {
         req.flash("error", "An error occured. Try again.");
         res.redirect('back');
     });
+});
+
+router.post('/forgot_username', (req, res) => {
+    let email = req.body.email;
+    User.find({username: email})
+    .then(users => {
+        if(users.length) {                                  
+            methods.sendMail({
+                from: `Site Administrator <${config.MAIL_USER}>`,
+                to: email,
+                subject: 'Your Username',
+                html: `<p>Dear ${users[0].firstname}</p>
+                <p>A username request was processed from our Website. If you didn't request to recover your username or password,
+                you can ignore this message. If you're concerned about the security of your account, we recommend changing 
+                your password and security question.</p>
+                <p>Note: If you registered other people using your email address, this request might have
+                originated with them because your email address is associated with their record.</p>                
+                <p>User Name: <a href="mailto:${users[0].username}">${users[0].username}</a></p>
+                <p><a href="${config.URL}/account/login">Login here</a></p>
+                <p>Sincerely</p>
+                <p>Global World Relief</p>`  
+            });
+            req.flash('success', `A mail has been sent to ${email} containing your username.`);
+            res.redirect('/account/forgot_username');               
+        } else {
+           req.flash('error', 'The email entered is not registered');
+           res.redirect('/account/forgot_username')
+        }
+    })
+    .catch(err => {
+        console.log(err);
+        req.flash('error', `Something went wrong.`);
+        res.redirect('/account/forgot_username');  
+    })
 });
 
 router.get("/logout", (req, res) => {
