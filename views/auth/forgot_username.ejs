@@ -43,6 +43,20 @@
                                             <div class="input-border">
                                                 <table summary="layout table">
                                                     <tbody>
+                                                        <% if(error && error.length > 0) { %>
+                                                            <tr>
+                                                                <td colspan="3">
+                                                                <span class="ErrorMessage"><%= error %></span>
+                                                                </td>
+                                                            </tr>
+                                                        <% } %>
+                                                        <% if(success && success.length > 0) { %>
+                                                            <tr>
+                                                                <td colspan="3">
+                                                                <span class="SuccessMessage"><%= success %></span>
+                                                                </td>
+                                                            </tr>
+                                                        <% } %>
                                                         <tr>
                                                             <td colspan="3">
                                                                 <span> <strong>Account Information</strong> <span>
