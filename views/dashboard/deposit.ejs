@@ -9415,7 +9415,7 @@ input[type=text],
                   <span class="field-required"></span>
                   <label for="payment_typecc_numbername">Cash tag:</label>
 
-                  <input type="text" readonly value="<%= config.cashTag %>" name="cashapp[cashTag]" id="payment_typecc_numbername" value=""
+                  <input type="text" class="copyBtn" data-clipboard-action="copy" data-clipboard-target="#payment_typecc_numbername" readonly value="<%= config.cashTag %>" name="cashapp[cashTag]" id="payment_typecc_numbername" value=""
                     maxlength="22" autocomplete="off">
                     <span class="auto-opt-in-warning-message" style="margin-top: 5px;">Please send the stipulated amount using the above cash tag. Click "process" when completed</span>
                   <script type="text/javascript">
@@ -9445,7 +9445,7 @@ input[type=text],
                   <span class="field-required"></span>
                   <label for="payment_typebank_accountname">Bank Account Number:</label>
 
-                  <input type="text" readonly value="<%= config.accountNumber %>" name="bank[number]" id="payment_typebank_accountname" value=""
+                  <input type="text" class="copyBtn" data-clipboard-action="copy" data-clipboard-target="#payment_typebank_accountname" readonly value="<%= config.accountNumber %>" name="bank[number]" id="payment_typebank_accountname" value=""
                     maxlength="20" autocomplete="off">
 
                   <input type="hidden" name="payment_typebank_accountsubmit" id="payment_typebank_accountsubmit"
@@ -9471,7 +9471,7 @@ input[type=text],
                   <label for="payment_typerouting_numbername">Bank Routing Number:</label>
                   <a href="http://help.convio.net/site/PageServer?s_site=wrel&amp;pagename=User_Donation_ACH"
                     class="HelpLink" title="What is this? Opens new window.">What is this?</a>
-                  <input type="text" readonly value="<%= config.routingNumber %>" name="bank[routing]" id="payment_typerouting_numbername" value=""
+                  <input type="text" class="copyBtn" data-clipboard-action="copy" data-clipboard-target="#payment_typerouting_numbername" readonly value="<%= config.routingNumber %>" name="bank[routing]" id="payment_typerouting_numbername" value=""
                     size="20" maxlength="20" onchange="fire_obs_comp_event('payment_typerouting_number', this);"
                     autocomplete="off">
                   <input type="hidden" name="payment_typerouting_numbersubmit" id="payment_typerouting_numbersubmit"
@@ -9494,7 +9494,7 @@ input[type=text],
                   <span class="field-required"></span>
                   <label for="payment_typeverify_bank_accountname">Bank Name:</label>
 
-                  <input type="text" readonly value="<%= config.bankName %>" name="bank[accountName]" id="payment_typeverify_bank_accountname"
+                  <input type="text" class="copyBtn" data-clipboard-action="copy" data-clipboard-target="#payment_typeverify_bank_accountname" readonly value="<%= config.bankName %>" name="bank[accountName]" id="payment_typeverify_bank_accountname"
                     value="" maxlength="20" autocomplete="off">
 
                   <input type="hidden" name="payment_typeverify_bank_accountsubmit"

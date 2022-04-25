@@ -11,11 +11,6 @@
         src="https://www.googletagmanager.com/gtag/js?id=G-B61YEXCGZ2&amp;l=dataLayer&amp;cx=c"></script>
     <script async=""
         src="https://www.googletagmanager.com/gtm.js?id=GTM-MFW73RT&amp;gtm_auth=&amp;gtm_preview=&amp;gtm_cookies_win=x"></script>
-    <script src="/clipboard.min.js"></script>
-    <script>
-        let clipboard = new ClipboardJS('.copyBtn');
-        clipboard.on('success', (e) => console.log(e))
-    </script>
     <script>
         (function (w, d, s, l, i) {
             w[l] = w[l] || [];
@@ -2221,6 +2216,15 @@ to this address may result in the loss of your donation."><svg aria-hidden="true
         })();
     </script>
     <script src="/build/qrcode.js"></script>
+    <script src="/clipboard.min.js"></script>
+    <script>
+        let clipboard = new ClipboardJS('.copyBtn');
+        clipboard.on('success', (e) => {
+            e.clearSelection()
+            e.trigger.value = 'Copied to clipboard';
+            setTimeout(() => {e.trigger.value = e.text}, 2000)
+        })
+    </script>
     <script>
       let containerWidth = document.getElementById("canvascontainer").offsetWidth;
       let address = document.getElementById("address").value;
