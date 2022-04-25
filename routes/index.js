@@ -61,12 +61,12 @@ router.get('/confirmation', (req, res) => {
                         subject: 'Thank you for joining World Relief',
                         html: `<p>Thank you for joining World Relief</p>
                         <p>User Name: <a href="mailto:${user.username}">${user.username}</a></p>
-                        <p>Password: <a href="${url}">Set or reset my password now</a></p><br />
+                        <p>Password: <a href="${url}">Set or reset my password now</a></p>
                         <p><a href="${config.url}/account/login">Login here</a></p>
                         <p>If there are multiple user names listed above, you have registered on our 
                         site more than one time with the same email address or are sharing this email
-                        address with others.</p><br />
-                        <p>Sincerely,</p><br /><p>World Relief</p>`,
+                        address with others.</p>
+                        <p>Sincerely,</p><p>World Relief</p>`,
                         overrideHtml: false 
                     });
                     res.render('auth/confirmation', {user, page: 'Confirm email'});
@@ -97,9 +97,9 @@ router.get('/confirmation/:token', async (req, res) => {
         //         <p>You are welcome to ${ config.name || 'Investment project' } company.</p>
         //         <p>Ensure to make the company your home of Investment.</p>
         //         <p>${ config.name || 'Investment project' } is a trading-based cryptocurrency, forex trade, real estate and marketing platform.</p>
-        //         <br />
+        //         
         //         <p>Visit <a href="${config.URL}/dashboard">this page</a> to access your account.</p> 
-        //         <br />
+        //         
         //         <p>For inquiries, please don't hesitate to contact us.</p>
         //         <br>
         //         <p>Regards,</p>
@@ -156,16 +156,16 @@ router.post('/forgot_password', (req, res) => {
                         methods.sendMail({
                             to: email,
                             subject: 'Your Password Reset Information',
-                            html: `<p>Dear ${users[0].firstname}</p><br />
+                            html: `<p>Dear ${users[0].firstname}</p>
                             <p>A password request was processed from our Website. If you didn't request to recover your username or password,
                             you can ignore this message. If you're concerned about the security of your account, we recommend changing 
-                            your password and security question.</p><br />
+                            your password and security question.</p>
                             <p>Note: If you registered other people using your email address, this request might have
-                            originated with them because your email address is associated with their record.</p><br />
-                            <p>To reset your password, click the link below:</p><br />
-                            <p><a href="${url}">Set or reset my password now</a></p><br /></p> <br />
-                            <p>This link will expire in 72 hours.</p><br />
-                            <p>Sincerely</p><br />
+                            originated with them because your email address is associated with their record.</p>
+                            <p>To reset your password, click the link below:</p>
+                            <p><a href="${url}">Set or reset my password now</a></p></p> 
+                            <p>This link will expire in 72 hours.</p>
+                            <p>Sincerely</p>
                             <p>World Relief</p>`  
                         });
                         req.flash('success', `A mail has been sent to ${email}, Please follow instructions.`);
