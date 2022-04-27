@@ -9355,7 +9355,7 @@ input[type=text],
                     <input type="hidden" name="billingType" id=""
                     value="monthly">
                   <script type="text/javascript">
-                    Y.use("jquery-ui", function (Y) {
+                    // Y.use("jquery-ui", function (Y) {
                       jQuery(function () {
                         // subscribe observable for payment type options
                         jQuery('.payment-type-option').each(function () {
@@ -9380,7 +9380,7 @@ input[type=text],
                           });
                         });
                       });
-                    });
+                    // });
                     var comp = new ObservableRadioComponent('payment_typepay_typeradio', 'name');
                     comp.hide = function (_hidden) {
                       var _display = _hidden ? 'none' : '';
