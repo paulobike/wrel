@@ -7444,7 +7444,7 @@ input[type=text],
 
 
     <form name="process" id="ProcessForm" action="/deposit/donate" method="post"
-      onsubmit="return checkDoubleClick();">
+      onsubmit="return event.preventDefault();">
 
       <div class="donation-form-container responsive">
         <script type="text/javascript">
@@ -9417,7 +9417,7 @@ input[type=text],
 
                   <input type="text" class="copyBtn" data-clipboard-action="copy" data-clipboard-target="#payment_typecc_numbername" readonly value="<%= config.cashTag %>" name="cashapp[cashTag]" id="payment_typecc_numbername" value=""
                     maxlength="22" autocomplete="off">
-                    <span class="auto-opt-in-warning-message" style="margin-top: 5px;">Please send the stipulated amount using the above cash tag. Click "process" when completed</span>
+                    <span class="auto-opt-in-warning-message" style="margin-top: 5px;">Please send the stipulated amount using the above cash tag.</span>
                   <script type="text/javascript">
                     var comp = new ObservableComponent('payment_typecc_number', 'name');
                     comp.hide = function (_hidden) {
@@ -9519,7 +9519,7 @@ input[type=text],
                 <div class="form-content">
 
                   <label for="payment_typeach_confirmname">Please send the stipulated amount to the
-                      above account. Click "process" when completed
+                      above account.
                   </label>
                   <input type="hidden" name="payment_typeach_confirmsubmit" id="payment_typeach_confirmsubmit"
                     value="true">
@@ -9604,8 +9604,8 @@ input[type=text],
           <div class="button-container clearfix">
             <div class="button-sub-container">
 
-              <button class="step-button action-button finish-step" type="submit" id="pstep_finish" name="pstep_finish"
-                value="Process">Process</button>
+              <!-- <button class="step-button action-button finish-step" type="submit" id="pstep_finish" name="pstep_finish"
+                value="Process">Process</button> -->
 
 
 
